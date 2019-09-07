@@ -5,7 +5,7 @@ import './AudioTour.css';
 import {Redirect} from 'react-router-dom';
 import MapContainer from '../MapContainer';
 import { Icon, AutoComplete, Modal, Button, Input } from 'antd';
-
+import Player from './AudioPlayer'
 
 const leftArrow = require('../../assets/imgs/left-arrow.svg');
 
@@ -39,9 +39,12 @@ class AudioTour extends Component {
         <div className="Title">
           <p className="mainTitle">University of Pennsylvania</p>
         </div>
+        {/* Audio player */}
+        < Player />
         <div className="mapHolder">
           <MapContainer height={"40%"} />
         </div>
+        
         <Button type="primary" className="prev">Previous</Button>
         <Button type="primary" className="next">Next</Button>
         <div className="row justify-content-center star">
