@@ -13,7 +13,8 @@ const BASE_URL = "http://9db5910f.ngrok.io";
 class AudioTour extends Component {
   state = {
     isFetching: false,
-    hasRated: false
+    hasRated: false,
+    mp3URL: ""
   }
 
   handleRate = value => {
@@ -68,7 +69,7 @@ class AudioTour extends Component {
           Interested in staying updated?
         </div>
         {/* Audio player */}
-        {/* < Player /> */}
+        < Player url="https://www.computerhope.com/jargon/m/example.mp3" />
         <div className="mapHolder">
           <MapContainer height={"40%"} />
         </div>
