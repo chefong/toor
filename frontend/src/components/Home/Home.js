@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import './Home.css';
-import UniversitiesList from '../Universities-List'
+import Universities_Input from '../Universities_Input';
 
 class Home extends Component {
+
   render() {
+    var myTxt = require("../../universities.txt");
+
     return (
       <div className="home-container">
-        < UniversitiesList />
+        <Universities_Input
+            txt={myTxt}
+        />
       </div>
     )
   }
