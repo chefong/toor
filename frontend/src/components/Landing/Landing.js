@@ -12,7 +12,7 @@ class Landing extends Component {
     return(
         <div className="background">
           <div className="circleBase type1"></div>
-          <Animated animationIn="bounceInUp" animationInDuration={100} isVisible={true}>
+          <Animated animationIn="bounceInUp" isVisible={true}>
             <img className="marker" src={marker}></img>
           </Animated>
 
