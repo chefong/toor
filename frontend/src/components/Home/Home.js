@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import { AutoComplete, Modal, Button, Input } from 'antd';
+import { Link } from 'react-router-dom';
+import { message, AutoComplete, Modal, Button, Input } from 'antd';
 import { universities } from '../../universities';
 import './Home.css';
 import MapContainer from '../MapContainer';
@@ -8,16 +8,19 @@ import Item from '../Item/Item';
 import {Animated} from "react-animated-css";
 
 
-const BASE_URL = "http://5938164a.ngrok.io";
+const BASE_URL = "http://9db5910f.ngrok.io";
 
 class Home extends Component {
   inputRef = React.createRef();
 
   state = {
     modalIsOpen: false,
-    isUploading: false,
+    isFetching: false,
     dataSource: [],
     selectedUniversity: '',
+    title: '',
+    files: [],
+    searchResults: [],
     audioTours: [
       {
         id: 1,
@@ -26,9 +29,33 @@ class Home extends Component {
       {
         id: 2,
         rating: 4
+      },
+      {
+        id: 3,
+        rating: 4
       }
-    ]
+    ],
+    markers: []
   }
+
+  componentDidMount = () => {
+    fetch(`${BASE_URL}/selectN/4`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        const searchResults = data.map(({ id, rating, school, title }) => ({ id, rating, school, title }));
+        console.log(searchResults);
+        this.setState({ searchResults });
+      })
+      .catch(error => console.error(error));
+  }
+
+  updateMarkers = (temp) => {
+    this.setState({
+      markers: temp
+    })
+  }
+
 
   handleClick = () => {
     this.setState({ modalIsOpen: true });
@@ -38,34 +65,10 @@ class Home extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-  handleDeleteClick = () => {
-
-  }
   handleChange = e => {
     e.preventDefault();
-
-    this.setState({ isUploading: true });
-
-    const formData = new FormData();
     const files = e.target.files;
-
-    Array.from(files).forEach(file => {
-      formData.append('files', file)
-    })
-
-    fetch(`${BASE_URL}/submitTour`, {
-      method: 'POST',
-      body: formData
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        this.setState({ isUploading: false });
-      })
-      .catch(error => {
-        console.error(error);
-        this.setState({ isUploading: false });
-      })
+    this.setState({ files });
   }
 
   handleUploadButtonClick = () => {
@@ -78,17 +81,83 @@ class Home extends Component {
     });
   }
 
-  onSelect = value => {
+  onModalSearchSelect = value => {
     this.setState({ selectedUniversity: value });
   }
 
+  handleSubmitButtonClick = e => {
+    e.preventDefault();
+
+    this.setState({ isFetching: true });
+
+    const formData = new FormData();
+    Array.from(this.state.files).forEach(file => {
+      formData.append('files', file)
+    })
+
+    formData.append('school', this.state.selectedUniversity);
+    formData.append('title', this.state.title);
+    for (var i = 0; i < this.state.markers.length; i++) {
+      formData.append(i, JSON.stringify(this.state.markers[i].position));
+    }
+    formData.append('size', this.state.markers.length)
+
+
+    fetch(`${BASE_URL}/submitTour`, {
+      method: 'POST',
+      body: formData,
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        message.success("Your audio tour has successfully been submitted!");
+        this.setState({
+          isFetching: false,
+          modalIsOpen: false
+        });
+      })
+      .catch(error => {
+        console.error(error);
+        message.error("Something went wrong while trying to submit your audio tour.");
+        this.setState({ isFetching: false });
+      })
+  }
+
+  handleTitleInput = e => {
+    this.setState({ title: e.target.value });
+  }
+
+  onSearchSelect = value => {
+    const formData = new FormData();
+    formData.append('school', value);
+
+    fetch(`${BASE_URL}/search`, {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        const searchResults = data.map(({ id, rating, school, title }) => ({ id, rating, school, title }));
+        console.log(searchResults);
+        this.setState({ searchResults, isFetching: false });
+      })
+      .catch(error => {
+        console.error(error);
+        this.setState({ isFetching: false });
+      })
+  }
+
   render() {
+    if (this.state.markers.length > 0){
+      console.log(this.state.markers[0].position)
+    }
     return (
       <div className="home">
         <div className="container-fluid">
-          <NavLink to="/">
+          <Link to="/">
             <h1 className="title">To͝or</h1>
-          </NavLink>
+          </Link>
           <div className="row justify-content-center">
             <AutoComplete
               className="home__autocomplete"
@@ -96,17 +165,15 @@ class Home extends Component {
               dataSource={this.state.dataSource}
               style={{ width: '304px' }}
               onSearch={this.onSearch}
-              onSelect={this.onSelect}
+              onSelect={this.onSearchSelect}
               placeholder="Search for a university..."
             />
           </div>
-          {this.state.audioTours && this.state.audioTours.map(audioTour => {
+          {this.state.searchResults && this.state.searchResults.map(result => {
             return (
-              <NavLink to={`/home/audio-tour/${audioTour.id}`}>
-                <Animated animationIn="slideInLeft" animationOut="fadeOut" isVisible={true}>
-                  <Item {...audioTour} />
-                </Animated>
-              </NavLink>
+              <Link to={{ pathname: `/home/audio-tour/${result.id}`, state: {...result} }}>
+                <Item {...result} />
+              </Link>
             )
           })}
           <div className="row justify-content-center">
@@ -125,16 +192,17 @@ class Home extends Component {
                 dataSource={this.state.dataSource}
                 style={{ width: '100%' }}
                 onSearch={this.onSearch}
-                onSelect={this.onSelect}
+                onSelect={this.onModalSearchSelect}
                 placeholder="Search for a university..."
               />
-              <Input className="home__input-title" placeholder="Title" />
+              <Input className="home__input-title" placeholder="Title" name="title" onChange={this.handleTitleInput} />
               <input type="file" name="files" ref={this.inputRef} onChange={this.handleChange} multiple hidden/>
               <div className="row justify-content-center">
                 <Button type="primary" onClick={this.handleUploadButtonClick} ghost>Upload Files</Button>
               </div>
-              <MapContainer height={"50%"} selectedUniversity={this.state.selectedUniversity}/>
+              <MapContainer height={"50%"} selectedUniversity={this.state.selectedUniversity} updateMarkers={this.updateMarkers}/>
               <div className="row justify-content-center">
+                <Button className="home__submit-button" type="primary" loading={this.state.isFetching} onClick={this.handleSubmitButtonClick}>Submit</Button>
               </div>
             </div>
           </Modal>

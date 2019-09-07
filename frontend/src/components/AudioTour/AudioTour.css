@@ -43,6 +43,7 @@
   margin-left: 24px;
   line-height: 100%;
   margin-top: 24px;
+  width: 80%;
 }
 
 .mapHolder {
@@ -55,5 +56,9 @@
 
 .Title {
   text-align: center;
+  position: absolute;
+}
+
+.positioning {
   position: absolute;
 }

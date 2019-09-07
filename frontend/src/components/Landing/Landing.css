@@ -189,18 +189,18 @@ button:focus {
 }
 
 .footer {
-  background-color: #787878;
+  background-color: #282828;
   text-align: center;
 }
 
 .Innerfooter {
   color: white;
   padding: 8px;
-  font-size: 16px;
+  font-size: 10px;
 }
 
 .InnerLogos {
   display: flex;
-  font-size: 20px;
+  font-size: 14px;
   text-align: center;
 }

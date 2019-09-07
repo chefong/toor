@@ -22,25 +22,26 @@ class MapContainer extends Component {
       ]
     };
   }
-
+  
   onClick = (t, map, coord) => {
-    const { latLng } = coord;
-    const lat = latLng.lat();
-    const lng = latLng.lng();
+     const { latLng } = coord;
+     const lat = latLng.lat();
+     const lng = latLng.lng();
 
-    this.setState(previousState => {
-      return {
-        markers: [
-          ...previousState.markers,
-          {
-            title: "",
-            name: "",
-            position: { lat, lng }
-          }
-        ]
-      };
-    });
-  }
+     this.setState(previousState => {
+       return {
+         markers: [
+           ...previousState.markers,
+           {
+             title: "",
+             name: "",
+             position: { lat, lng }
+           }
+         ]
+       };
+     });
+     this.props.updateMarkers(this.state.markers)
+   }
 
   handleSubmitButtonClick = () => {
     console.log("hello")
@@ -84,11 +85,10 @@ class MapContainer extends Component {
           zoom={14}
           onClick={this.onClick}
         >
-          {this.state.markers.map((marker, index) => (
+          {this.state.markers && this.state.markers.map((marker, index) => (
             <Marker
               key={index}
-              title={marker.title}
-              name={marker.name}
+
               position={marker.position}
             />
           ))}
