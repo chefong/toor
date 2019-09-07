@@ -6,7 +6,7 @@ import './Home.css';
 import MapContainer from '../MapContainer';
 import Item from '../Item/Item';
 
-const BASE_URL = "http://5938164a.ngrok.io";
+const BASE_URL = "http://9db5910f.ngrok.io";
 
 class Home extends Component {
   inputRef = React.createRef();
@@ -16,6 +16,8 @@ class Home extends Component {
     isUploading: false,
     dataSource: [],
     selectedUniversity: '',
+    title: '',
+    files: [],
     audioTours: [
       {
         id: 1,
@@ -36,20 +38,57 @@ class Home extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-  handleDeleteClick = () => {
-
-  }
   handleChange = e => {
     e.preventDefault();
 
     this.setState({ isUploading: true });
+    const files = e.target.files;
+    this.setState({ files });
+
+    // const formData = new FormData();
+    // Array.from(files).forEach(file => {
+    //   formData.append('files', file)
+    // })
+
+    // fetch(`${BASE_URL}/submitTour`, {
+    //   method: 'POST',
+    //   body: formData
+    // })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     console.log(data);
+    //     this.setState({ isUploading: false });
+    //   })
+    //   .catch(error => {
+    //     console.error(error);
+    //     this.setState({ isUploading: false });
+    //   })
+  }
+
+  handleUploadButtonClick = () => {
+    this.inputRef.current.click();
+  }
+
+  onSearch = text => {
+    this.setState({
+      dataSource: universities.filter(university => university.substring(0, text.length).toLowerCase() === text.toLowerCase())
+    });
+  }
+
+  onSelect = value => {
+    this.setState({ selectedUniversity: value });
+  }
+
+  handleSubmitButtonClick = e => {
+    e.preventDefault();
 
     const formData = new FormData();
-    const files = e.target.files;
-
-    Array.from(files).forEach(file => {
+    Array.from(this.state.files).forEach(file => {
       formData.append('files', file)
     })
+
+    formData.append('school', this.state.selectedUniversity);
+    formData.append('title', this.state.title);
 
     fetch(`${BASE_URL}/submitTour`, {
       method: 'POST',
@@ -66,18 +105,8 @@ class Home extends Component {
       })
   }
 
-  handleUploadButtonClick = () => {
-    this.inputRef.current.click();
-  }
-
-  onSearch = text => {
-    this.setState({
-      dataSource: universities.filter(university => university.substring(0, text.length).toLowerCase() === text.toLowerCase())
-    });
-  }
-
-  onSelect = value => {
-    this.setState({ selectedUniversity: value });
+  handleTitleInput = e => {
+    this.setState({ title: e.target.value });
   }
 
   render() {
@@ -124,7 +153,7 @@ class Home extends Component {
                 onSelect={this.onSelect}
                 placeholder="Search for a university..."
               />
-              <Input className="home__input-title" placeholder="Title" />
+              <Input className="home__input-title" placeholder="Title" name="title" onChange={this.handleTitleInput} />
               <input type="file" name="files" ref={this.inputRef} onChange={this.handleChange} multiple hidden/>
               <div className="row justify-content-center">
                 <Button type="primary" onClick={this.handleUploadButtonClick} ghost>Upload Files</Button>

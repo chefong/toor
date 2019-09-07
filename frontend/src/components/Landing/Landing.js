@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { Button } from 'antd';
-import { Animated } from "react-animated-css";
 import { NavLink, Redirect } from 'react-router-dom';
 import './Landing.css';
 import Particles from 'react-particles-js';
-import pinpoint from './pinpoint.png';
-import shapes from './shapes.svg';
 
 const globe = require('../../assets/imgs/circleMap.svg');
 const phone = require('../../assets/imgs/phone.svg');
@@ -72,16 +69,6 @@ class Landing extends Component {
       [event.target.name]: event.target.value
     });
   }
-
-  handleSubmit = (event) => {
-     event.preventDefault()
-     this.setState({
-       Email: '',
-       Password: '',
-       Redirect: true
-   })
-  }
-
 
   render(){
     if (this.state.Redirect){
