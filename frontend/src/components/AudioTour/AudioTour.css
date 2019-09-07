@@ -63,3 +63,11 @@
 .phone-container, .rate-container {
   margin-left: 24px;
 }
+
+.popover-description {
+  line-height: 20px;
+}
+
+.submit-phone-container {
+  text-align: center;
+}
