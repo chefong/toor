@@ -117,7 +117,6 @@ button:focus {
 }
 
 .titleBox {
-  margin-top: 6%;
   margin-left: 6%;
 }
 
@@ -125,4 +124,43 @@ button:focus {
   font-weight: 300;
   color: white;
   font-size: 5em;
+}
+
+#landing-title {
+  font-size: 48px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  text-align: center;
+  width: 90%;
+  font-family: "SF Pro";
+  font-weight: 700;
+  color: #505050;
+}
+
+.globe {
+  width: 80%;
+  margin-top: 10%;
+}
+
+#get-started {
+  margin-bottom: 32px;
+  margin-top: 16px;
+}
+
+.landing__left {
+  margin-top: 10%;
+}
+
+.landing__header {
+  font-family: "SF Pro";
+  font-weight: 700;
+  margin-top: 16px;
+  margin-left: 16px;
+  font-size: 24px;
+  margin-bottom: -4px;
+}
+
+.landing-title-description {
+  width: 80%;
+  text-align: center;
 }

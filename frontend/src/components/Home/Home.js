@@ -104,7 +104,7 @@ class Home extends Component {
             )
           })}
           <div className="row justify-content-center">
-            <Button className="home__plus" type="primary" onClick={this.handleClick}><span className="bold-me">+</span></Button>
+            <Button shape="round" className="home__plus" type="primary" onClick={this.handleClick}><span className="bold-me">+</span></Button>
           </div>
           <Modal
             centered

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { Button } from 'antd';
 import { Animated } from "react-animated-css";
-import {Redirect} from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import './Landing.css';
 import Particles from 'react-particles-js';
 import pinpoint from './pinpoint.png';
 import shapes from './shapes.svg';
 
+const globe = require('../../assets/imgs/circleMap.svg');
 
 const particlesOptions = {
   particles: {
@@ -80,37 +82,62 @@ class Landing extends Component {
 
   render(){
     if (this.state.Redirect){
-      return <Redirect to={{pathname: '/home'}} />
+      return <Redirect to={{ pathname: '/home' }} />
     }
 
     return(
-        <div className="background">
-          <div className="section1" style={{ backgroundImage : `url(${shapes})` }}>
-            <div className="circle">
-              <img className="pinpoint" src={pinpoint}></img>
-            </div>
-            <div className="titleBox">
-            <h1 className="landing__title">Toor</h1>
-            </div>
+      <div className="landing-container">
+        <div className="container-fluid">
+          <div className="row">
+            <p className="landing__header">To͝or</p>
           </div>
-          <div className="section2">
-            <Particles className="particles" params={particlesOptions} />
-              <div className="section2inner">
-                <div className="section2Padding">
-                  <div className="bodyText">
-                    <h2 className="section2Header">Sign In</h2>
-                    <p className="text">Log into your account to access the features of this app</p>
-                  </div>
-                  <form onSubmit={this.handleSubmit}>
-                    <input className="input" type="text" name="Email" placeholder="Email" value={this.state.Email} onChange={this.handleChange}/>
-                    <input className="input second" type="password" name="Password" placeholder="Password" value={this.state.Password} onChange={this.handleChange}/>
-                    <button className="Login"> LOGIN </button>
-                  </form>
-                  <div className="forgotPwd">Forgot your password?</div>
-                </div>
+          <div className="row justify-content-center">
+            <div className="landing__left col-md-6">
+              <div className="row justify-content-center">
+                <h1 id="landing-title">Audible Experiences Start Here.</h1>
+              </div>
+              <div className="row justify-content-center">
+                <p className="landing-title-description">Experiences university campuses right from your phone.</p>
+              </div>
+              <div className="row justify-content-center">
+                <Button type="primary" id="get-started">Get Started</Button>
               </div>
             </div>
+            <div className="col-md-6">
+              <div className="row justify-content-center">
+                <img src={globe} className="globe" alt=""/>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+        // <div className="background">
+        //   <div className="section1" style={{ backgroundImage : `url(${shapes})` }}>
+        //     <div className="circle">
+        //       <img className="pinpoint" src={pinpoint}></img>
+        //     </div>
+        //     <div className="titleBox">
+        //     <h1 className="landing__title">Toor</h1>
+        //     </div>
+        //   </div>
+        //   <div className="section2">
+        //     <Particles className="particles" params={particlesOptions} />
+        //       <div className="section2inner">
+        //         <div className="section2Padding">
+        //           <div className="bodyText">
+        //             <h2 className="section2Header">Sign In</h2>
+        //             <p className="text">Log into your account to access the features of this app</p>
+        //           </div>
+        //           <form onSubmit={this.handleSubmit}>
+        //             <input className="input" type="text" name="Email" placeholder="Email" value={this.state.Email} onChange={this.handleChange}/>
+        //             <input className="input second" type="password" name="Password" placeholder="Password" value={this.state.Password} onChange={this.handleChange}/>
+        //             <button className="Login"> LOGIN </button>
+        //           </form>
+        //           <div className="forgotPwd">Forgot your password?</div>
+        //         </div>
+        //       </div>
+        //     </div>
+        // </div>
     )
   }
 }
