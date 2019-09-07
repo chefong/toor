@@ -17,11 +17,14 @@ class MapContainer extends Component {
         {
           title: "",
           name: "",
-          position: { lat: 37.778519, lng: -122.40564 }
+          position: { lat: 39.9522, lng: 75.1932 }
         }
-      ]
+      ],
+      userLocation: { lat: 39.9522, lng: -75.1932 }
     };
   }
+
+
 
   onClick = (t, map, coord) => {
      const { latLng } = coord;
@@ -84,6 +87,7 @@ class MapContainer extends Component {
           className="map"
           zoom={14}
           onClick={this.onClick}
+          initialCenter={this.state.userLocation}
         >
           {this.state.markers && this.state.markers.map((marker, index) => (
             <Marker

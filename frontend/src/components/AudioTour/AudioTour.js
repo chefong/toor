@@ -47,7 +47,7 @@ class AudioTour extends Component {
   handlePopoverSubmit = e => {
     e.preventDefault();
     this.setState({ isPopoverLoading: true });
-    
+
     const phoneNumber = "1" + e.target.phone.value;
     const formData = new FormData();
     formData.append('phoneNumber', phoneNumber);

@@ -8,9 +8,16 @@ const globe = require('../../assets/imgs/circleMap.svg');
 const phone = require('../../assets/imgs/phone.svg');
 const lightBulb = require('../../assets/imgs/lightbulb.svg');
 const checked = require('../../assets/imgs/checked.svg');
+const marker = require('../../assets/imgs/Marker.png')
 
 const particlesOptions = {
   particles: {
+      shape: {
+        type: 'images',
+        images: [
+          {src: marker, height: 20, width: 20},
+        ]
+      },
       number: {
         value: 100,
         density: {

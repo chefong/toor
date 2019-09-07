@@ -8,7 +8,7 @@ import Item from '../Item/Item';
 import {Animated} from "react-animated-css";
 
 
-const BASE_URL = "http://9db5910f.ngrok.io";
+const BASE_URL = "http://b16664ee.ngrok.io";
 const spinner = require('../../assets/imgs/spinner.svg');
 
 class Home extends Component {
