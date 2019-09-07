@@ -140,6 +140,7 @@ button:focus {
 .globe {
   width: 80%;
   margin-top: 10%;
+  margin-bottom: 20%;
 }
 
 #get-started {
@@ -163,4 +164,28 @@ button:focus {
 .landing-title-description {
   width: 80%;
   text-align: center;
+}
+
+.info {
+  background-color: #505050;
+  height: 100%;
+  width: 100%;
+}
+
+.info-item {
+  text-align: center;
+}
+
+.info-item-image {
+  width: 15%;
+  margin-top: 6%;
+  margin-bottom: 4%;
+}
+
+.info-description {
+  font-family: "SF Pro";
+  color: white;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 10%;
 }

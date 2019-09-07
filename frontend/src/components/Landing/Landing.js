@@ -8,6 +8,9 @@ import pinpoint from './pinpoint.png';
 import shapes from './shapes.svg';
 
 const globe = require('../../assets/imgs/circleMap.svg');
+const phone = require('../../assets/imgs/phone.svg');
+const lightBulb = require('../../assets/imgs/lightbulb.svg');
+const checked = require('../../assets/imgs/checked.svg');
 
 const particlesOptions = {
   particles: {
@@ -97,15 +100,39 @@ class Landing extends Component {
                 <h1 id="landing-title">Audible Experiences Start Here.</h1>
               </div>
               <div className="row justify-content-center">
-                <p className="landing-title-description">Experiences university campuses right from your phone.</p>
+                <p className="landing-title-description">Experience university campuses right from your phone.</p>
               </div>
               <div className="row justify-content-center">
-                <Button type="primary" id="get-started">Get Started</Button>
+                <NavLink to="/home">
+                  <Button type="primary" id="get-started">Get Started</Button>
+                </NavLink>
               </div>
             </div>
             <div className="col-md-6">
               <div className="row justify-content-center">
                 <img src={globe} className="globe" alt=""/>
+              </div>
+            </div>
+          </div>
+          <div className="row justify-content-center">
+            <div className="info">
+              <div className="info-item">
+                <img className="info-item-image" src={phone} alt=""/>
+                <p className="info-description">
+                  Have the opportunity to experience different campuses throughout the world right from your phone. Other users are able to show you around campus without having to be there, no traveling necessary!
+                </p>
+              </div>
+              <div className="info-item">
+                <img className="info-item-image" src={checked} alt=""/>
+                <p className="info-description">
+                  Have the opportunity to experience different campuses throughout the world right from your phone. Other users are able to show you around campus without having to be there, no traveling necessary!
+                </p>
+              </div>
+              <div className="info-item">
+                <img className="info-item-image" src={lightBulb} alt=""/>
+                <p className="info-description">
+                  Have the opportunity to experience different campuses throughout the world right from your phone. Other users are able to show you around campus without having to be there, no traveling necessary!
+                </p>
               </div>
             </div>
           </div>

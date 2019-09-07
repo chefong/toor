@@ -72,7 +72,7 @@ class Home extends Component {
 
   onSearch = text => {
     this.setState({
-      dataSource: universities.filter(university => university.substring(0, text.length) === text)
+      dataSource: universities.filter(university => university.substring(0, text.length).toLowerCase() === text.toLowerCase())
     });
   }
 
@@ -84,7 +84,9 @@ class Home extends Component {
     return (
       <div className="home">
         <div className="container-fluid">
-          <h1 className="title">To͝or</h1>
+          <NavLink to="/">
+            <h1 className="title">To͝or</h1>
+          </NavLink>
           <div className="row justify-content-center">
             <AutoComplete
               className="home__autocomplete"
