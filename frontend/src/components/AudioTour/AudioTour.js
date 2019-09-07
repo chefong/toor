@@ -80,8 +80,12 @@ class AudioTour extends Component {
     if (this.state.redirecting){
       return <Redirect push to="/home" />
     }
-
-    const { rating, school, title } = this.props.location.state;
+    let player = <div></div>;
+    const { rating, school, title, link } = this.props.location.state;
+    if(link != null && link.length != 0) {
+      player = 
+      <Player link={this.props.location.state.link[0]} />
+    }
 
     return (
       <div className="audio-tour-container">
@@ -119,6 +123,7 @@ class AudioTour extends Component {
             Interested in staying updated?
           </Popover>
         </div>
+
         {/* Audio player */}
          {/* < Player link={this.props.location.state.link[0]} /> */}
         <MapContainer/>
