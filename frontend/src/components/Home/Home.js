@@ -13,7 +13,7 @@ class Home extends Component {
 
   state = {
     modalIsOpen: false,
-    isUploading: false,
+    isFetching: false,
     dataSource: [],
     selectedUniversity: '',
     title: '',
@@ -40,29 +40,8 @@ class Home extends Component {
 
   handleChange = e => {
     e.preventDefault();
-
-    this.setState({ isUploading: true });
     const files = e.target.files;
     this.setState({ files });
-
-    // const formData = new FormData();
-    // Array.from(files).forEach(file => {
-    //   formData.append('files', file)
-    // })
-
-    // fetch(`${BASE_URL}/submitTour`, {
-    //   method: 'POST',
-    //   body: formData
-    // })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log(data);
-    //     this.setState({ isUploading: false });
-    //   })
-    //   .catch(error => {
-    //     console.error(error);
-    //     this.setState({ isUploading: false });
-    //   })
   }
 
   handleUploadButtonClick = () => {
@@ -82,6 +61,8 @@ class Home extends Component {
   handleSubmitButtonClick = e => {
     e.preventDefault();
 
+    this.setState({ isFetching: true });
+
     const formData = new FormData();
     Array.from(this.state.files).forEach(file => {
       formData.append('files', file)
@@ -97,11 +78,11 @@ class Home extends Component {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        this.setState({ isUploading: false });
+        this.setState({ isFetching: false });
       })
       .catch(error => {
         console.error(error);
-        this.setState({ isUploading: false });
+        this.setState({ isFetching: false });
       })
   }
 
