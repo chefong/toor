@@ -20,6 +20,7 @@ class Home extends Component {
     dataSource: [],
     selectedUniversity: '',
     title: '',
+    link: '',
     files: [],
     searchResults: [],
     audioTours: [
@@ -141,7 +142,7 @@ class Home extends Component {
       .then(response => response.json())
       .then(data => {
         console.log(data)
-        const searchResults = data.map(({ id, rating, school, title }) => ({ id, rating, school, title }));
+        const searchResults = data.map(({ id, link, rating, school, title }) => ({ id, link, rating, school, title }));
         console.log('searchResult' , searchResults);
         this.setState({ searchResults, isFetching: false });
       })
@@ -177,6 +178,7 @@ class Home extends Component {
               </div>
             : <Fragment>
               {this.state.searchResults && this.state.searchResults.map(result => {
+                console.log("resultttt ", result)
                 return (
                   <Link to={{ pathname: `/home/audio-tour/${result.id}`, state: {...result} }}>
                     <Item {...result} />
