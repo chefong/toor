@@ -4,7 +4,7 @@ import { AutoComplete, Modal, Button, Input } from 'antd';
 
 const style = {
   width: '90%',
-  height: '55%',
+  height: '50%',
   margin: 'auto',
   marginTop: '20%',
   position: 'relative'
@@ -76,11 +76,10 @@ class MapContainer extends Component {
   render() {
     return (
       <div className="row justify-content-center">
-      <Button className="delete" onClick={this.handleDeleteClick}>Delete Previous</Button>
         <Map
           google={this.props.google}
           style={style}
-          className={"map"}
+          className="map"
           zoom={14}
           onClick={this.onClick}
         >
@@ -93,7 +92,6 @@ class MapContainer extends Component {
             />
           ))}
         </Map>
-        <Button className="home__submit-button" type="primary" onClick={this.handleSubmitButtonClick}>Submit</Button>
 
       </div>
     );

@@ -17,10 +17,10 @@
 
 .home__submit-button {
   position: absolute;
-  margin-top: 512px;
+  margin-top: 464px;
 }
 
-.home__title {
+.title {
   font-family: "SF Pro";
   font-weight: bolder;
   font-size: 40px;
@@ -31,16 +31,26 @@
 
 #first {
   margin-top: 0px;
+  margin-bottom: 24px;
 }
 
-.delete{
-  margin-left: 65px;
-  color: red;
-  background-color: transparent;
-  border-color: red;
-  text-shadow: none;
+.bold-me {
+  font-weight: 700;
 }
 
-.flex{
-  display: flex;
+.home__plus {
+  border-radius: 32px;
+  margin-top: 32px;
+}
+
+.ant-btn-primary {
+  box-shadow: 0 0 10px 0px #5680FF;
+}
+
+.home__input-title {
+  margin-bottom: 24px;
+}
+
+.ant-btn-background-ghost {
+  box-shadow: none;
 }

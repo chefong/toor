@@ -1,0 +1,43 @@
+#campus {
+  font-size: 200%;
+}
+
+.prev {
+  position: absolute;
+  top: 80%;
+  left: 7%;
+}
+
+.next {
+  position: absolute;
+  top: 80%;
+  right: 7%;
+}
+
+.star {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  right: 0;
+}
+
+.iconArrow {
+  position: relative;
+  margin-top: 20px;
+  margin-left: 12px;
+  font-size: 30px;
+}
+
+.mainTitle {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.mapHolder {
+  padding-top: 50px;
+}
+
+.Title {
+  text-align: center;
+  position: absolute;
+}
