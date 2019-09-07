@@ -39,12 +39,14 @@ class AudioTour extends Component {
         <div className="Title">
           <p className="mainTitle">University of Pennsylvania</p>
         </div>
-        {/* Audio player */}
-        < Player />
+        
         <div className="mapHolder">
           <MapContainer height={"40%"} />
         </div>
-        
+
+        {/* Audio player */}
+        <Player className="audio-player" />
+
         <Button type="primary" className="prev">Previous</Button>
         <Button type="primary" className="next">Next</Button>
         <div className="row justify-content-center star">
