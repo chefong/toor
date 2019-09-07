@@ -12,7 +12,8 @@ class Home extends Component {
   state = {
     modalIsOpen: false,
     isUploading: false,
-    dataSource: []
+    dataSource: [],
+    selectedUniversity: ''
   }
 
   handleClick = () => {
@@ -60,30 +61,37 @@ class Home extends Component {
     });
   }
 
+  onSelect = value => {
+    this.setState({ selectedUniversity: value });
+  }
+
   render() {
     return (
       <div className="home">
         <Button type="primary" onClick={this.handleClick}>Create</Button>
         <Modal
-          centered={true}
+          centered
           visible={this.state.modalIsOpen}
           onCancel={this.handleCancel}
           footer={[]}
-          width="55vw"
+          width="90vw"
         >
-        <MapContainer />
-
           <div className="container-fluid">
             <AutoComplete
               className="home__autocomplete"
               dataSource={this.state.dataSource}
               style={{ width: '100%' }}
               onSearch={this.onSearch}
+              onSelect={this.onSelect}
               placeholder="Search for a university..."
             />
             <input type="file" name="files" ref={this.inputRef} onChange={this.handleChange} multiple hidden/>
             <div className="row justify-content-center">
               <Button type="primary" onClick={this.handleUploadButtonClick} ghost>Upload Files</Button>
+            </div>
+            <MapContainer />
+            <div className="row justify-content-center">
+              <Button className="home__submit-button" type="primary" onClick={this.handleSubmitButtonClick}>Submit</Button>
             </div>
           </div>
         </Modal>

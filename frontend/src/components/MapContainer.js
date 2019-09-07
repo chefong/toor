@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 const style = {
   width: '90%',
-  height: '90%',
+  height: '55%',
   margin: 'auto',
+  marginTop: '20%',
+  position: 'relative'
 }
 
 class MapContainer extends Component {
@@ -41,9 +43,8 @@ class MapContainer extends Component {
   }
 
   render() {
-    console.log(this.state.markers)
     return (
-      <div>
+      <div className="row justify-content-center">
         <Map
           google={this.props.google}
           style={style}
