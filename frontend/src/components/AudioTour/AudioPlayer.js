@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
 import ReactPlayer from 'react-player'
 
+const playerStyle={
+  marginLeft: '16px',
+  marginRight: '16px',
+}
+
 class AudioPlayer extends Component {
   render () {
     return <ReactPlayer controls={true}
-     url='http://www.hochmuth.com/mp3/Haydn_Cello_Concerto_D-1.mp3'
+     url={this.props.link}
      fileConfig={{ forceAudio: true }}
-     width="500px"
+     width="90%"
      height="50px"
+     style={playerStyle}
      playing />
   }
 }

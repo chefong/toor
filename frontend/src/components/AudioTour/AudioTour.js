@@ -68,7 +68,7 @@ class AudioTour extends Component {
           Interested in staying updated?
         </div>
         {/* Audio player */}
-        {/* < Player /> */}
+         < Player link={this.props.location.state.link[0]} />
         <div className="mapHolder">
           <MapContainer height={"40%"} />
         </div>
