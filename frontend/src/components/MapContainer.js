@@ -23,10 +23,6 @@ class MapContainer extends Component {
     };
   }
 
-  componentDidMount = () => {
-    console.log(process.env.REACT_APP_GOOGLE)
-  }
-
   onClick = (t, map, coord) => {
      const { latLng } = coord;
      const lat = latLng.lat();

@@ -142,7 +142,7 @@ class Home extends Component {
       .then(data => {
         console.log(data)
         const searchResults = data.map(({ id, rating, school, title }) => ({ id, rating, school, title }));
-        console.log(searchResults);
+        console.log('searchResult' , searchResults);
         this.setState({ searchResults, isFetching: false });
       })
       .catch(error => {
@@ -183,6 +183,9 @@ class Home extends Component {
                   </Link>
                 )
               })}
+              {
+                (this.state.searchResults.length == 0)? ( <div> No audio tour available </div>) : <div></div>
+              }
               <div className="row justify-content-center">
                 <Button shape="round" className="home__plus" type="primary" onClick={this.handleClick}><span className="bold-me">+</span></Button>
               </div>

@@ -70,3 +70,11 @@
   left: 0;
   right: 0;
 }
+
+.popover-description {
+  line-height: 20px;
+}
+
+.submit-phone-container {
+  text-align: center;
+}
