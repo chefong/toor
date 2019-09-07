@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'antd';
 import './Home.css';
+import Universities_Input from '../Universities_Input';
 
 const BASE_URL = "http://5938164a.ngrok.io";
 
@@ -52,6 +53,8 @@ class Home extends Component {
   }
 
   render() {
+    var myTxt = require("../../universities.txt");
+
     return (
       <div className="home">
         <Button type="primary" onClick={this.handleClick}>Create</Button>
@@ -62,6 +65,9 @@ class Home extends Component {
           footer={[]}
         >
           <div className="container-fluid">
+            <Universities_Input
+               txt={myTxt}
+             />
             <input type="file" name="files" ref={this.inputRef} onChange={this.handleChange} multiple hidden/>
             <div className="row justify-content-center">
               <Button type="primary" onClick={this.handleUploadButtonClick} ghost>Upload Files</Button>
