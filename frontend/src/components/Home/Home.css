@@ -9,3 +9,85 @@
   margin-bottom: 16px;
   margin-top: 32px;
 }
+
+.create {
+  margin: auto;
+}
+
+.home {
+  height: 100vh;
+  display: flex;
+}
+
+.home1 {
+  width: 40%;
+}
+
+.Tour, .Welcome {
+  margin:auto;
+  text-align: center;
+  margin-top: 20%;
+  font-size: 4em;
+  font-weight: 300;
+}
+
+.Welcome {
+  color: #D3D3D3;
+}
+
+.sub1 {
+  width: 80%;
+  display: flex;
+  margin: auto;
+}
+
+.homesub1 {
+  display: flex;
+  width: 100%;
+}
+
+.alpha1, .alpha2 {
+  width: 40%;
+  margin-left: 10%;
+  height: 20vh%;
+  text-align: center;
+  border: 1px solid #C8C8C8;
+  border-radius: 6px 6px 1px 1px;
+}
+
+@media only screen and (max-width: 400px) {
+  .alpha1 {
+    width: 90%;
+    margin-left: 10%;
+    height: 20vh;
+    text-align: center;
+    border: 1px solid #C8C8C8;
+    border-radius: 6px 6px 1px 1px;
+  }
+
+}
+
+
+.subalpha {
+  border-radius: 6px 6px 0px 0px;
+  background-color: #5680FF;
+  padding: 4px;
+}
+
+.a1Title {
+  font-size: 20px;
+  font-weight: 300;
+  color: white;
+  padding-top: 5px;
+}
+
+.a2Title {
+  color: white;
+  font-weight: 300;
+}
+
+.arrow {
+  border-radius: 50%;
+  border: solid 1px black;
+  color: #5680FF;
+}

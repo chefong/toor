@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="573px" height="825px" viewBox="0 0 573 825" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Rectangle + Rectangle + Oval + Rectangle + Rectangle + Oval + Triangle Mask</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="3.061617e-15%" id="linearGradient-1">
+            <stop stop-color="#006DD2" offset="0%"></stop>
+            <stop stop-color="#04DCBF" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="573" height="825"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Rectangle-+-Rectangle-+-Oval-+-Rectangle-+-Rectangle-+-Oval-+-Triangle-Mask">
+            <mask id="mask-3" fill="white">
+                <use xlink:href="#path-2"></use>
+            </mask>
+            <use id="Mask" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+            <polygon id="Rectangle" fill-opacity="0.2" fill="#FFFFFF" mask="url(#mask-3)" transform="translate(104.718115, 209.680557) rotate(81.000000) translate(-104.718115, -209.680557) " points="77.2505625 186.979831 130.636831 188.528666 132.185667 232.381284 78.7993981 230.832448"></polygon>
+            <polygon id="Rectangle" fill-opacity="0.2" fill="#FFFFFF" mask="url(#mask-3)" transform="translate(405.385733, 650.468443) rotate(27.000000) translate(-405.385733, -650.468443) " points="380.521589 622.658239 426.194972 626.713143 430.249876 678.278646 384.576493 674.223742"></polygon>
+            <polygon id="Rectangle" fill-opacity="0.2" fill="#FFFFFF" mask="url(#mask-3)" transform="translate(433.180669, 232.140500) rotate(34.000000) translate(-433.180669, -232.140500) " points="411.217395 219.949867 453.285073 224.132323 455.143942 244.331132 413.076264 240.148676"></polygon>
+            <circle id="Oval" fill-opacity="0.2" fill="#FFFFFF" mask="url(#mask-3)" cx="146.5" cy="644.5" r="134.5"></circle>
+            <polygon id="Rectangle" fill-opacity="0.2" fill="#FFFFFF" mask="url(#mask-3)" transform="translate(236.661146, 332.776009) rotate(71.000000) translate(-236.661146, -332.776009) " points="215.016366 322.607732 257.071614 325.076356 258.305926 342.944286 216.250677 340.475662"></polygon>
+            <circle id="Oval" fill-opacity="0.2" fill="#FFFFFF" mask="url(#mask-3)" cx="391" cy="73" r="40"></circle>
+            <polygon id="Triangle" fill-opacity="0.2" fill="#FFFFFF" mask="url(#mask-3)" transform="translate(447.438305, 458.476938) rotate(-43.000000) translate(-447.438305, -458.476938) " points="457.038167 408.941666 496.190817 497.912357 398.685793 508.012211"></polygon>
+        </g>
+    </g>
+</svg>
