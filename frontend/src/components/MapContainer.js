@@ -22,33 +22,36 @@ class MapContainer extends Component {
       ]
     };
   }
-
+  
   onClick = (t, map, coord) => {
-    const { latLng } = coord;
-    const lat = latLng.lat();
-    const lng = latLng.lng();
+     const { latLng } = coord;
+     const lat = latLng.lat();
+     const lng = latLng.lng();
 
-    this.setState(previousState => {
-      return {
-        markers: [
-          ...previousState.markers,
-          {
-            title: "",
-            name: "",
-            position: { lat, lng }
-          }
-        ]
-      };
-    });
-  }
+     this.setState(previousState => {
+       return {
+         markers: [
+           ...previousState.markers,
+           {
+             title: "",
+             name: "",
+             position: { lat, lng }
+           }
+         ]
+       };
+     });
+     this.props.updateMarkers(this.state.markers)
+   }
 
   handleSubmitButtonClick = () => {
-    fetch("http://localhost:5000/pinpoints", {
+    console.log("hello")
+    fetch("http://9db5910f.ngrok.io/point", {
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        'markers': this.state.markers
+        'markers': this.state.markers,
+        'selectedUniversity': this.props.selectedUniversity
       }),
       method: "POST",
     })
@@ -82,16 +85,14 @@ class MapContainer extends Component {
           zoom={14}
           onClick={this.onClick}
         >
-          {this.state.markers.map((marker, index) => (
+          {this.state.markers && this.state.markers.map((marker, index) => (
             <Marker
               key={index}
-              title={marker.title}
-              name={marker.name}
+
               position={marker.position}
             />
           ))}
         </Map>
-
       </div>
     );
   }

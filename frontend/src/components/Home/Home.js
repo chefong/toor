@@ -5,6 +5,8 @@ import { universities } from '../../universities';
 import './Home.css';
 import MapContainer from '../MapContainer';
 import Item from '../Item/Item';
+import {Animated} from "react-animated-css";
+
 
 const BASE_URL = "http://9db5910f.ngrok.io";
 const spinner = require('../../assets/imgs/spinner.svg');
@@ -33,7 +35,8 @@ class Home extends Component {
         id: 3,
         rating: 4
       }
-    ]
+    ],
+    markers: []
   }
 
   componentDidMount = () => {
@@ -49,6 +52,13 @@ class Home extends Component {
         this.setState({ isFetching: false });
       });
   }
+
+  updateMarkers = (temp) => {
+    this.setState({
+      markers: temp
+    })
+  }
+
 
   handleClick = () => {
     this.setState({ modalIsOpen: true });
@@ -90,10 +100,15 @@ class Home extends Component {
 
     formData.append('school', this.state.selectedUniversity);
     formData.append('title', this.state.title);
+    for (var i = 0; i < this.state.markers.length; i++) {
+      formData.append(i, JSON.stringify(this.state.markers[i].position));
+    }
+    formData.append('size', this.state.markers.length)
+
 
     fetch(`${BASE_URL}/submitTour`, {
       method: 'POST',
-      body: formData
+      body: formData,
     })
       .then(response => response.json())
       .then(data => {
@@ -137,6 +152,9 @@ class Home extends Component {
   }
 
   render() {
+    if (this.state.markers.length > 0){
+      console.log(this.state.markers[0].position)
+    }
     return (
       <div className="home">
         <div className="container-fluid">
@@ -192,7 +210,7 @@ class Home extends Component {
                   <div className="row justify-content-center">
                     <Button type="primary" onClick={this.handleUploadButtonClick} ghost>Upload Files</Button>
                   </div>
-                  <MapContainer height={"50%"} />
+                  <MapContainer height={"50%"} updateMarkers={this.updateMarkers}/>
                   <div className="row justify-content-center">
                     <Button className="home__submit-button" type="primary" loading={this.state.isFetching} onClick={this.handleSubmitButtonClick}>Submit</Button>
                   </div>

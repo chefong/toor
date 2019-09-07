@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'antd';
+import { Icon, Button } from 'antd';
 import { NavLink, Redirect } from 'react-router-dom';
 import './Landing.css';
 import Particles from 'react-particles-js';
@@ -125,6 +125,11 @@ class Landing extends Component {
             </div>
           </div>
         </div>
+        <div className="footer">
+          <div className="Innerfooter">Made with ♥ in Riverside, CA</div>
+          <div className="Innerfooter">© 2018 Cutie Hack</div>
+        </div>
+
       </div>
         // <div className="background">
         //   <div className="section1" style={{ backgroundImage : `url(${shapes})` }}>

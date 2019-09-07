@@ -5,6 +5,8 @@ import {Redirect} from 'react-router-dom';
 import MapContainer from '../MapContainer';
 import { Icon, AutoComplete, Modal, Button, Input } from 'antd';
 import Player from './AudioPlayer';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 const BASE_URL = "http://9db5910f.ngrok.io";
 
@@ -47,7 +49,7 @@ class AudioTour extends Component {
     if (this.state.redirecting){
       return <Redirect push to="/home" />
     }
-    
+
     const { rating, school } = this.props.location.state;
 
     return (
@@ -61,9 +63,22 @@ class AudioTour extends Component {
         <div className="mapHolder">
           <MapContainer height={"40%"} />
         </div>
-        
-        <Button type="primary" className="prev">Previous</Button>
-        <Button type="primary" className="next">Next</Button>
+        <div className="carousel-container">
+          <Carousel>
+            <div>
+              <img src="assets/1.jpeg" />
+              <p className="legend">Legend 1</p>
+            </div>
+            <div>
+              <img src="assets/2.jpeg" />
+              <p className="legend">Legend 2</p>
+            </div>
+            <div>
+              <img src="assets/3.jpeg" />
+              <p className="legend">Legend 3</p>
+            </div>
+          </Carousel>
+        </div>
         <div className="row justify-content-center star">
           <Rate defaultValue={rating || 0} disabled={this.state.hasRated} className="audio-tour__rate" onChange={this.handleRate} />
         </div>
