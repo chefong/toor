@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './Home.css';
+import UniversitiesList from '../Universities-List'
 
 class Home extends Component {
   render() {
     return (
       <div className="home-container">
-        Hi I'm Home
+        < UniversitiesList />
       </div>
     )
   }
