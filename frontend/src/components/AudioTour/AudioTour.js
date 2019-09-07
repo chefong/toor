@@ -120,7 +120,7 @@ class AudioTour extends Component {
           </Popover>
         </div>
         {/* Audio player */}
-        {/* < Player /> */}
+         < Player link={this.props.location.state.link[0]} />
         <div className="mapHolder">
           <MapContainer/>
         </div>
