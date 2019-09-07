@@ -2,6 +2,10 @@
   height: 90vh;
 }
 
+.ant-modal-header {
+  display: none;
+}
+
 .ant-modal-body {
   padding: 0px;
 }
@@ -13,5 +17,28 @@
 
 .home__submit-button {
   position: absolute;
-  margin-top: 512px
+  margin-top: 512px;
+  padding-bottom: 32px;
+}
+
+.home__title {
+  font-family: "SF Pro";
+  font-weight: bolder;
+  font-size: 40px;
+  color: #505050;
+  margin-top: 64px;
+  margin-left: 16px;
+}
+
+#first {
+  margin-top: 0px;
+}
+
+.bold-me {
+  font-weight: bolder;
+}
+
+.home__plus {
+  border-radius: 32px;
+  margin-top: 32px;
 }

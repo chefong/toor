@@ -1,8 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "SF Pro";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -15,4 +13,19 @@ code {
 .ant-modal-header, .ant-modal-footer {
   border: none;
   display: none
+}
+
+@font-face {
+  font-family: "SF Pro";
+  src: url('./assets/fonts/SF-Pro-Display-Medium.otf')
+}
+
+@font-face {
+  font-family: "SF Pro";
+  src: url('./assets/fonts/SF-Pro-Display-Heavy.otf');
+  font-weight: bolder;
+}
+
+input {
+  background-color: #979797;
 }
