@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
+import './MapContainer.css'
 
 const style = {
   width: '90%',
@@ -22,10 +23,6 @@ class MapContainer extends Component {
     };
   }
 
-  componentDidMount = () => {
-    console.log(process.env.REACT_APP_GOOGLE)
-  }
-  
   onClick = (t, map, coord) => {
      const { latLng } = coord;
      const lat = latLng.lat();
@@ -80,7 +77,7 @@ class MapContainer extends Component {
 
   render() {
     return (
-      <div className="row justify-content-center">
+      <div className="row justify-content-center mapingBox">
         <Map
           google={this.props.google}
           style={{...style, height: this.props.height}}

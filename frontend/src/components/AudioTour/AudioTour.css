@@ -3,13 +3,6 @@
   margin-top: 16px;
 }
 
-#left-arrow {
-  width: 8%;
-  color: #505050;
-  margin-left: 16px;
-  margin-top: 32px;
-}
-
 .prev {
   position: absolute;
   top: 80%;
@@ -45,7 +38,7 @@
   margin-bottom: 0px;
   font-family: "SF Pro";
   font-weight: 500;
-  margin-top: 24px;
+  padding-top: 24px;
 }
 
 .audio-tour-container {
@@ -62,4 +55,23 @@
 }
 .phone-container, .rate-container {
   margin-left: 24px;
+}
+
+.carouselDiv {
+  position: absolute;
+  top: 85%;
+  left: 0;
+  right: 0;
+}
+
+.popover-description {
+  line-height: 20px;
+}
+
+.submit-phone-container {
+  text-align: center;
+}
+
+.left-button {
+  margin-left: 20px;
 }

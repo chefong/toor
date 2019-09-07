@@ -13,6 +13,7 @@
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "papaparse": "^5.0.2",
+    "pure-react-carousel": "^1.22.0",
     "react": "^16.9.0",
     "react-animated-css": "^1.2.1",
     "react-app-rewired": "^2.1.3",

@@ -212,7 +212,7 @@ class Home extends Component {
                   <div className="row justify-content-center">
                     <Button type="primary" onClick={this.handleUploadButtonClick} ghost>Upload Files</Button>
                   </div>
-                  <MapContainer height={"50%"} updateMarkers={this.updateMarkers}/>
+                  <MapContainer updateMarkers={this.updateMarkers}/>
                   <div className="row justify-content-center">
                     <Button className="home__submit-button" type="primary" loading={this.state.isFetching} onClick={this.handleSubmitButtonClick}>Submit</Button>
                   </div>
