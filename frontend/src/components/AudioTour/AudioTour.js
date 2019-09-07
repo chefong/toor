@@ -72,7 +72,7 @@ class AudioTour extends Component {
         <div className="mapHolder">
           <MapContainer height={"40%"} />
         </div>
-        <div className="carousel-container row justify-content-center">
+        {/* <div className="carousel-container row justify-content-center">
           <Carousel>
             <div>
               <img src="assets/1.jpeg" />
@@ -87,7 +87,7 @@ class AudioTour extends Component {
               <p className="legend">Legend 3</p>
             </div>
           </Carousel>
-        </div>
+        </div> */}
       </div>
     )
   }

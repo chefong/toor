@@ -21,6 +21,10 @@ class MapContainer extends Component {
       ]
     };
   }
+
+  componentDidMount = () => {
+    console.log(process.env.REACT_APP_GOOGLE)
+  }
   
   onClick = (t, map, coord) => {
      const { latLng } = coord;
@@ -98,5 +102,5 @@ class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: ('AIzaSyBXRQGWepvcs75R20UmjLQTEGhWtsIORsc')
+  apiKey: (process.env.REACT_APP_GOOGLE)
 })(MapContainer)
