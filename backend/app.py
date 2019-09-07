@@ -2,9 +2,25 @@ from flask import Flask, request, url_for
 from flask_pymongo import PyMongo
 from flask_cors import CORS
 import json
+from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
-app.config['MONGO_URI'] = 'mongodb+srv://adiach:pennapps@cluster0-jgwg7.mongodb.net/test?retryWrites=true&w=majority'
-mongo = PyMongo(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://ffkuamto:OhmcWQRyqWFMuRTysqP8VCSVaHbssLVx@salt.db.elephantsql.com:5432/ffkuamto"
+db = SQLAlchemy(app)
+
+# app.config['MONGO_URI'] = 'mongodb+srv://adiach:pennapps@cluster0-jgwg7.mongodb.net/test?retryWrites=true&w=majority'
+# mongo = PyMongo(app)
+
+
+
+class FileContents(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(300))
+    data = db.Column(db.LargeBinary)
+
+
+
+
+
 CORS(app)
 @app.route('/', methods=['GET','POST'])
 def main():
@@ -41,15 +57,24 @@ def submitTour():
         print(request.files.getlist('files'))
         fileList = request.files.getlist('files')
         print(request.form)
+        fileNameList = []
+        for file in fileList:
+            print("HIIIIIII")
+            print(file.filename)
+            # newFile = FileContents(name=file.filename, data=file.read())
+            # db.session.add(newFile)
+            # db.session.commit()
+            # fileNameList.append(file.filename)
 
-        # for file in fileList:
 
+
+        # mongo.db.tour.insert({'id':id, points:[[][][][][]]})
 
         # print(request.form['files'])
         # print(type(request.form['files']))
         # print(type(request.form))
         # print(request.data)
-        return json.dumps({"Hewwo":"hewwo"})
+        return json.dumps({"Hewwo":fileNameList})
 
 
     return json.dumps({"uu":"uwuw"})
