@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import { AutoComplete, Modal, Button, Input } from 'antd';
+import { Link } from 'react-router-dom';
+import { message, AutoComplete, Modal, Button, Input } from 'antd';
 import { universities } from '../../universities';
 import './Home.css';
 import MapContainer from '../MapContainer';
@@ -18,6 +18,7 @@ class Home extends Component {
     selectedUniversity: '',
     title: '',
     files: [],
+    searchResults: [],
     audioTours: [
       {
         id: 1,
@@ -26,8 +27,24 @@ class Home extends Component {
       {
         id: 2,
         rating: 4
+      },
+      {
+        id: 3,
+        rating: 4
       }
     ]
+  }
+
+  componentDidMount = () => {
+    fetch(`${BASE_URL}/selectN/4`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        const searchResults = data.map(({ id, rating, school, title }) => ({ id, rating, school, title }));
+        console.log(searchResults);
+        this.setState({ searchResults });
+      })
+      .catch(error => console.error(error));
   }
 
   handleClick = () => {
@@ -54,7 +71,7 @@ class Home extends Component {
     });
   }
 
-  onSelect = value => {
+  onModalSearchSelect = value => {
     this.setState({ selectedUniversity: value });
   }
 
@@ -78,10 +95,15 @@ class Home extends Component {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        this.setState({ isFetching: false });
+        message.success("Your audio tour has successfully been submitted!");
+        this.setState({
+          isFetching: false,
+          modalIsOpen: false
+        });
       })
       .catch(error => {
         console.error(error);
+        message.error("Something went wrong while trying to submit your audio tour.");
         this.setState({ isFetching: false });
       })
   }
@@ -90,13 +112,34 @@ class Home extends Component {
     this.setState({ title: e.target.value });
   }
 
+  onSearchSelect = value => {
+    const formData = new FormData();
+    formData.append('school', value);
+
+    fetch(`${BASE_URL}/search`, {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        const searchResults = data.map(({ id, rating, school, title }) => ({ id, rating, school, title }));
+        console.log(searchResults);
+        this.setState({ searchResults, isFetching: false });
+      })
+      .catch(error => {
+        console.error(error);
+        this.setState({ isFetching: false });
+      })
+  }
+
   render() {
     return (
       <div className="home">
         <div className="container-fluid">
-          <NavLink to="/">
+          <Link to="/">
             <h1 className="title">To͝or</h1>
-          </NavLink>
+          </Link>
           <div className="row justify-content-center">
             <AutoComplete
               className="home__autocomplete"
@@ -104,15 +147,15 @@ class Home extends Component {
               dataSource={this.state.dataSource}
               style={{ width: '304px' }}
               onSearch={this.onSearch}
-              onSelect={this.onSelect}
+              onSelect={this.onSearchSelect}
               placeholder="Search for a university..."
             />
           </div>
-          {this.state.audioTours && this.state.audioTours.map(audioTour => {
+          {this.state.searchResults && this.state.searchResults.map(result => {
             return (
-              <NavLink to={`/home/audio-tour/${audioTour.id}`}>
-                <Item {...audioTour} />
-              </NavLink>
+              <Link to={{ pathname: `/home/audio-tour/${result.id}`, state: {...result} }}>
+                <Item {...result} />
+              </Link>
             )
           })}
           <div className="row justify-content-center">
@@ -131,7 +174,7 @@ class Home extends Component {
                 dataSource={this.state.dataSource}
                 style={{ width: '100%' }}
                 onSearch={this.onSearch}
-                onSelect={this.onSelect}
+                onSelect={this.onModalSearchSelect}
                 placeholder="Search for a university..."
               />
               <Input className="home__input-title" placeholder="Title" name="title" onChange={this.handleTitleInput} />
@@ -141,7 +184,7 @@ class Home extends Component {
               </div>
               <MapContainer height={"50%"} />
               <div className="row justify-content-center">
-                <Button className="home__submit-button" type="primary" onClick={this.handleSubmitButtonClick}>Submit</Button>
+                <Button className="home__submit-button" type="primary" loading={this.state.isFetching} onClick={this.handleSubmitButtonClick}>Submit</Button>
               </div>
             </div>
           </Modal>
