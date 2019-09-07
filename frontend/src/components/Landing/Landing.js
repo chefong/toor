@@ -95,6 +95,7 @@ class Landing extends Component {
             <p className="landing__header">To͝or</p>
           </div>
           <div className="row justify-content-center">
+            <Particles className="particles" params={particlesOptions} />
             <div className="landing__left col-md-6">
               <div className="row justify-content-center">
                 <h1 id="landing-title">Audible Experiences Start Here.</h1>

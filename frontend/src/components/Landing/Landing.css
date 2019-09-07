@@ -86,10 +86,8 @@ button:focus {
 }
 
 .particles {
-  position:fixed;
-  right:0;
-  top:0;
-  width:65%;
+  position: absolute;
+  width:80%;
   height:100%;
   z-index: -2;
 }
