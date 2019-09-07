@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Modal, Button } from 'antd';
+import { AutoComplete, Modal, Button } from 'antd';
+import { universities } from '../../universities';
 import './Home.css';
-import Universities_Input from '../Universities_Input';
+import MapContainer from '../MapContainer';
 
 const BASE_URL = "http://5938164a.ngrok.io";
 
@@ -10,7 +11,8 @@ class Home extends Component {
 
   state = {
     modalIsOpen: false,
-    isUploading: false
+    isUploading: false,
+    dataSource: []
   }
 
   handleClick = () => {
@@ -52,22 +54,33 @@ class Home extends Component {
     this.inputRef.current.click();
   }
 
-  render() {
-    var myTxt = require("../../universities.txt");
+  onSearch = text => {
+    this.setState({
+      dataSource: universities.filter(university => university.substring(0, text.length) === text)
+    });
+  }
 
+  render() {
     return (
       <div className="home">
         <Button type="primary" onClick={this.handleClick}>Create</Button>
         <Modal
-          centered
+          centered={true}
           visible={this.state.modalIsOpen}
           onCancel={this.handleCancel}
           footer={[]}
+          width="55vw"
         >
+        <MapContainer />
+
           <div className="container-fluid">
-            <Universities_Input
-               txt={myTxt}
-             />
+            <AutoComplete
+              className="home__autocomplete"
+              dataSource={this.state.dataSource}
+              style={{ width: '100%' }}
+              onSearch={this.onSearch}
+              placeholder="Search for a university..."
+            />
             <input type="file" name="files" ref={this.inputRef} onChange={this.handleChange} multiple hidden/>
             <div className="row justify-content-center">
               <Button type="primary" onClick={this.handleUploadButtonClick} ghost>Upload Files</Button>

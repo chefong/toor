@@ -1,0 +1,11 @@
+.ant-modal-content {
+  height: 90vh;
+}
+
+.ant-modal-body {
+  padding: 0px;
+}
+.home__autocomplete {
+  margin-bottom: 16px;
+  margin-top: 32px;
+}

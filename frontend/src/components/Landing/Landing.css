@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 .background {
   background-color: #282A30;
   width: 100vw;
   height: 100vh;
 }
 
+=======
+>>>>>>> 95b64b1166e816fa54ae96647e0e6978102f2e8b
 .marker {
   width: 10vw;
 }
@@ -24,6 +27,7 @@
   border-style: solid;
   border-width: 4px;
 }
+<<<<<<< HEAD
 
 .type2 {
   width: 210px;
@@ -33,3 +37,5 @@
   border-width: 4px;
 
 }
+=======
+>>>>>>> 95b64b1166e816fa54ae96647e0e6978102f2e8b
