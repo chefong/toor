@@ -43,12 +43,14 @@ class MapContainer extends Component {
   }
 
   handleSubmitButtonClick = () => {
-    fetch("http://localhost:5000/pinpoints", {
+    console.log("hello")
+    fetch("http://9db5910f.ngrok.io/point", {
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        'markers': this.state.markers
+        'markers': this.state.markers,
+        'selectedUniversity': this.props.selectedUniversity
       }),
       method: "POST",
     })
@@ -91,7 +93,7 @@ class MapContainer extends Component {
             />
           ))}
         </Map>
-
+        <Button className="home__submit-button" type="primary" onClick={this.handleSubmitButtonClick}>Submit</Button>
       </div>
     );
   }

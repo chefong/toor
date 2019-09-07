@@ -5,6 +5,8 @@ import { universities } from '../../universities';
 import './Home.css';
 import MapContainer from '../MapContainer';
 import Item from '../Item/Item';
+import {Animated} from "react-animated-css";
+
 
 const BASE_URL = "http://5938164a.ngrok.io";
 
@@ -101,7 +103,9 @@ class Home extends Component {
           {this.state.audioTours && this.state.audioTours.map(audioTour => {
             return (
               <NavLink to={`/home/audio-tour/${audioTour.id}`}>
-                <Item {...audioTour} />
+                <Animated animationIn="slideInLeft" animationOut="fadeOut" isVisible={true}>
+                  <Item {...audioTour} />
+                </Animated>
               </NavLink>
             )
           })}
@@ -129,9 +133,8 @@ class Home extends Component {
               <div className="row justify-content-center">
                 <Button type="primary" onClick={this.handleUploadButtonClick} ghost>Upload Files</Button>
               </div>
-              <MapContainer height={"50%"} />
+              <MapContainer height={"50%"} selectedUniversity={this.state.selectedUniversity}/>
               <div className="row justify-content-center">
-                <Button className="home__submit-button" type="primary" onClick={this.handleSubmitButtonClick}>Submit</Button>
               </div>
             </div>
           </Modal>

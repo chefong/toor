@@ -187,3 +187,20 @@ button:focus {
   margin: 0 auto;
   margin-bottom: 10%;
 }
+
+.footer {
+  background-color: #787878;
+  text-align: center;
+}
+
+.Innerfooter {
+  color: white;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.InnerLogos {
+  display: flex;
+  font-size: 20px;
+  text-align: center;
+}
