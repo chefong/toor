@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Button } from 'antd';
 import './Home.css';
 import Universities_Input from '../Universities_Input';
+import MapContainer from '../MapContainer';
 
 const BASE_URL = "http://5938164a.ngrok.io";
 
@@ -59,11 +60,14 @@ class Home extends Component {
       <div className="home">
         <Button type="primary" onClick={this.handleClick}>Create</Button>
         <Modal
-          centered
+          centered={true}
           visible={this.state.modalIsOpen}
           onCancel={this.handleCancel}
           footer={[]}
+          width="55vw"
         >
+        <MapContainer />
+
           <div className="container-fluid">
             <Universities_Input
                txt={myTxt}
