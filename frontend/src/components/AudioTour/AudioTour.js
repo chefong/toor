@@ -4,19 +4,14 @@ import './AudioTour.css';
 import {Redirect} from 'react-router-dom';
 import MapContainer from '../MapContainer';
 import { Icon, AutoComplete, Modal, Button, Input } from 'antd';
-import Player from './AudioPlayer'
+import Player from './AudioPlayer';
 
-const leftArrow = require('../../assets/imgs/left-arrow.svg');
 const BASE_URL = "http://9db5910f.ngrok.io";
 
 class AudioTour extends Component {
   state = {
     isFetching: false,
     hasRated: false
-  }
-
-  componentDidMount = () => {
-    console.log(this.props.location);
   }
 
   handleRate = value => {

@@ -55,3 +55,7 @@
 .ant-btn-background-ghost {
   box-shadow: none;
 }
+
+.spinner {
+  margin: 0 auto;
+}
