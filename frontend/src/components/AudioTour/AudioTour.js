@@ -121,9 +121,7 @@ class AudioTour extends Component {
         </div>
         {/* Audio player */}
          {/* < Player link={this.props.location.state.link[0]} /> */}
-        <div className="mapHolder">
-          <MapContainer/>
-        </div>
+        <MapContainer/>
         <div className="carouselDiv">
           <div className="row justify-content-center">
             <div className="left-arrow-container col-3">

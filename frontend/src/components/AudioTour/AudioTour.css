@@ -58,8 +58,7 @@
 }
 
 .carouselDiv {
-  position: absolute;
-  top: 85%;
+  margin-top: 532px;
   left: 0;
   right: 0;
 }
@@ -73,5 +72,5 @@
 }
 
 .left-button {
-  margin-left: 20px;
+  margin-left: 24px;
 }

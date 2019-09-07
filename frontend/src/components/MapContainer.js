@@ -77,7 +77,7 @@ class MapContainer extends Component {
 
   render() {
     return (
-      <div className="row justify-content-center mapingBox">
+      <div className="row justify-content-center">
         <Map
           google={this.props.google}
           style={{...style, height: this.props.height}}
@@ -88,7 +88,6 @@ class MapContainer extends Component {
           {this.state.markers && this.state.markers.map((marker, index) => (
             <Marker
               key={index}
-
               position={marker.position}
             />
           ))}
