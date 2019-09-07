@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
-import { AutoComplete, Modal, Button, Input } from 'antd';
 
 const style = {
   width: '90%',
   margin: 'auto',
-  marginTop: '20%',
+  marginTop: '24px',
   position: 'relative'
 }
 
@@ -93,7 +92,6 @@ class MapContainer extends Component {
             />
           ))}
         </Map>
-        <Button className="home__submit-button" type="primary" onClick={this.handleSubmitButtonClick}>Submit</Button>
       </div>
     );
   }

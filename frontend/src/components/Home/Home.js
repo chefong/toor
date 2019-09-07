@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import { Link } from 'react-router-dom';
 import { message, AutoComplete, Modal, Button, Input } from 'antd';
 import { universities } from '../../universities';
@@ -9,6 +9,7 @@ import {Animated} from "react-animated-css";
 
 
 const BASE_URL = "http://9db5910f.ngrok.io";
+const spinner = require('../../assets/imgs/spinner.svg');
 
 class Home extends Component {
   inputRef = React.createRef();
@@ -39,15 +40,17 @@ class Home extends Component {
   }
 
   componentDidMount = () => {
+    this.setState({ isFetching: true });
     fetch(`${BASE_URL}/selectN/4`)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         const searchResults = data.map(({ id, rating, school, title }) => ({ id, rating, school, title }));
-        console.log(searchResults);
-        this.setState({ searchResults });
+        this.setState({ searchResults, isFetching: false });
       })
-      .catch(error => console.error(error));
+      .catch(error => {
+        console.error(error);
+        this.setState({ isFetching: false });
+      });
   }
 
   updateMarkers = (temp) => {
@@ -166,43 +169,51 @@ class Home extends Component {
               placeholder="Search for a university..."
             />
           </div>
-          {this.state.searchResults && this.state.searchResults.map(result => {
-            return (
-              <Link to={{ pathname: `/home/audio-tour/${result.id}`, state: {...result} }}>
-                <Item {...result} />
-              </Link>
-            )
-          })}
-          <div className="row justify-content-center">
-            <Button shape="round" className="home__plus" type="primary" onClick={this.handleClick}><span className="bold-me">+</span></Button>
-          </div>
-          <Modal
-            centered
-            visible={this.state.modalIsOpen}
-            onCancel={this.handleCancel}
-            footer={[]}
-            width="90vw"
-          >
-            <div className="container-fluid">
-              <AutoComplete
-                className="home__autocomplete"
-                dataSource={this.state.dataSource}
-                style={{ width: '100%' }}
-                onSearch={this.onSearch}
-                onSelect={this.onModalSearchSelect}
-                placeholder="Search for a university..."
-              />
-              <Input className="home__input-title" placeholder="Title" name="title" onChange={this.handleTitleInput} />
-              <input type="file" name="files" ref={this.inputRef} onChange={this.handleChange} multiple hidden/>
-              <div className="row justify-content-center">
-                <Button type="primary" onClick={this.handleUploadButtonClick} ghost>Upload Files</Button>
+          {this.state.isFetching
+            ? <div className="spinner-container">
+                <div className="row justify-content-center">
+                  <img src={spinner} className="spinner" alt=""/>
+                </div>
               </div>
-              <MapContainer height={"50%"} selectedUniversity={this.state.selectedUniversity} updateMarkers={this.updateMarkers}/>
+            : <Fragment>
+              {this.state.searchResults && this.state.searchResults.map(result => {
+                return (
+                  <Link to={{ pathname: `/home/audio-tour/${result.id}`, state: {...result} }}>
+                    <Item {...result} />
+                  </Link>
+                )
+              })}
               <div className="row justify-content-center">
-                <Button className="home__submit-button" type="primary" loading={this.state.isFetching} onClick={this.handleSubmitButtonClick}>Submit</Button>
+                <Button shape="round" className="home__plus" type="primary" onClick={this.handleClick}><span className="bold-me">+</span></Button>
               </div>
-            </div>
-          </Modal>
+              <Modal
+                centered
+                visible={this.state.modalIsOpen}
+                onCancel={this.handleCancel}
+                footer={[]}
+                width="90vw"
+              >
+                <div className="container-fluid">
+                  <AutoComplete
+                    className="home__autocomplete"
+                    dataSource={this.state.dataSource}
+                    style={{ width: '100%' }}
+                    onSearch={this.onSearch}
+                    onSelect={this.onModalSearchSelect}
+                    placeholder="Search for a university..."
+                  />
+                  <Input className="home__input-title" placeholder="Title" name="title" onChange={this.handleTitleInput} />
+                  <input type="file" name="files" ref={this.inputRef} onChange={this.handleChange} multiple hidden/>
+                  <div className="row justify-content-center">
+                    <Button type="primary" onClick={this.handleUploadButtonClick} ghost>Upload Files</Button>
+                  </div>
+                  <MapContainer height={"50%"} updateMarkers={this.updateMarkers}/>
+                  <div className="row justify-content-center">
+                    <Button className="home__submit-button" type="primary" loading={this.state.isFetching} onClick={this.handleSubmitButtonClick}>Submit</Button>
+                  </div>
+                </div>
+              </Modal>
+            </Fragment>}
         </div>
       </div>
     )
