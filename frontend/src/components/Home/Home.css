@@ -5,7 +5,13 @@
 .ant-modal-body {
   padding: 0px;
 }
+
 .home__autocomplete {
   margin-bottom: 16px;
-  margin-top: 32px;
+  margin-top: 64px;
+}
+
+.home__submit-button {
+  position: absolute;
+  margin-top: 512px
 }
