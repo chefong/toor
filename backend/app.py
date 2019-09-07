@@ -26,10 +26,25 @@ def submitTour():
 
     if request.method == 'POST':
 
+        #things I need for the tour
+        '''
+        1. user
+        2. school
+        3. start point
+        4. end point
+        5. all points and their corresponding audio files
+        '''
+
+
         print(request.files)
 
         print(request.files.getlist('files'))
+        fileList = request.files.getlist('files')
         print(request.form)
+
+        # for file in fileList:
+
+
         # print(request.form['files'])
         # print(type(request.form['files']))
         # print(type(request.form))
