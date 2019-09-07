@@ -120,13 +120,28 @@ class AudioTour extends Component {
           </Popover>
         </div>
         {/* Audio player */}
-         < Player link={this.props.location.state.link[0]} />
+         {/* < Player link={this.props.location.state.link[0]} /> */}
         <div className="mapHolder">
           <MapContainer/>
         </div>
         <div className="carouselDiv">
-          <Icon type="left-circle" />
-          <Icon type="right-circle" />
+          <div className="row justify-content-center">
+            <div className="left-arrow-container col-3">
+              <Button type="primary" className="left-button">
+                <Icon className="left-arrow" type="caret-left" style={{ fontSize: '16px', color: '#FFFFFF' }} />
+              </Button>
+            </div>
+            <div className="col-6">
+              <div className="audio-container">
+                audio file goes here
+              </div>
+            </div>
+            <div className="col-3">
+              <Button type="primary">
+                <Icon classname="right-arrow" type="caret-right" style={{ fontSize: '16px', color: '#FFFFFF' }} />
+              </Button>
+            </div>
+          </div>
         </div>
         {/* <div className="carousel-container row justify-content-center">
           <Carousel>
