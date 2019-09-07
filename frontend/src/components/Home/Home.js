@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'antd';
+import Create from '../Create/Create';
+import Search from '../Search/Search';
 import './Home.css';
 
 const BASE_URL = "http://5938164a.ngrok.io";
 
 class Home extends Component {
-  inputRef = React.createRef();
-
   state = {
     modalIsOpen: false,
-    isUploading: false
+    isUploading: false,
+    audioTours: []
   }
 
   handleClick = () => {
@@ -54,6 +55,7 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
+        <Search />
         <Button type="primary" onClick={this.handleClick}>Create</Button>
         <Modal
           centered
@@ -61,12 +63,7 @@ class Home extends Component {
           onCancel={this.handleCancel}
           footer={[]}
         >
-          <div className="container-fluid">
-            <input type="file" name="files" ref={this.inputRef} onChange={this.handleChange} multiple hidden/>
-            <div className="row justify-content-center">
-              <Button type="primary" onClick={this.handleUploadButtonClick} ghost>Upload Files</Button>
-            </div>
-          </div>
+          <Create handleChange={this.handleChange} />
         </Modal>
       </div>
     )
