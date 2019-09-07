@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Rate } from 'antd';
+import { NavLink } from 'react-router-dom';
 import './AudioTour.css';
 import {Redirect} from 'react-router-dom';
 import MapContainer from '../MapContainer';
@@ -9,14 +10,13 @@ import { Icon, AutoComplete, Modal, Button, Input } from 'antd';
 const leftArrow = require('../../assets/imgs/left-arrow.svg');
 
 class AudioTour extends Component {
-  constructor(){
-    super();
-    this.state = {
-      redirecting: false
-    }
+  state = {
+    isFetching: false
   }
+
   componentDidMount = () => {
     const id = this.props.match.params.id;
+    // Fetch from backend
   }
 
   handleRate = value => {

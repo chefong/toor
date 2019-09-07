@@ -1,5 +1,13 @@
 #campus {
   font-size: 200%;
+  margin-top: 16px;
+}
+
+#left-arrow {
+  width: 8%;
+  color: #505050;
+  margin-left: 16px;
+  margin-top: 32px;
 }
 
 .prev {

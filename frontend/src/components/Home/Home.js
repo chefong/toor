@@ -58,11 +58,11 @@ class Home extends Component {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        this.setState({ isUploading: true });
+        this.setState({ isUploading: false });
       })
       .catch(error => {
         console.error(error);
-        this.setState({ isUploading: true });
+        this.setState({ isUploading: false });
       })
   }
 
