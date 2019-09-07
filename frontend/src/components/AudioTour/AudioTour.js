@@ -80,7 +80,7 @@ class AudioTour extends Component {
     if (this.state.redirecting){
       return <Redirect push to="/home" />
     }
-    let player = <div></div>;
+    let player = <div className="ml-4">No audio available</div>;;
     const { rating, school, title, link } = this.props.location.state;
     if(link != null && link.length != 0) {
       player = 
