@@ -26,3 +26,18 @@
 .item__rate {
   margin-left: 12px;
 }
+
+.circlePhoto {
+  position: absolute;
+  right: 70px;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.aditya {
+  width: 50px;
+  border-radius: 50px;
+  position: absolute;
+  right: 80px;
+}

@@ -127,7 +127,7 @@ class Landing extends Component {
         </div>
         <div className="footer">
           <div className="Innerfooter">Made with ♥ in Riverside, CA</div>
-          <div className="Innerfooter">© 2018 Cutie Hack</div>
+          <div className="Innerfooter">© 2019 R'side Boys</div>
         </div>
 
       </div>

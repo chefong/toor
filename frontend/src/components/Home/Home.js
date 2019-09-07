@@ -149,9 +149,6 @@ class Home extends Component {
   }
 
   render() {
-    if (this.state.markers.length > 0){
-      console.log(this.state.markers[0].position)
-    }
     return (
       <div className="home">
         <div className="container-fluid">
