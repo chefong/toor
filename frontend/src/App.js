@@ -1,12 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Home from './components/Home/Home';
+import Landing from './components/Landing/Landing';
 import './App.css';
-import MapContainer from './components/map';
 
 function App() {
   return (
     <div className="App">
-      <MapContainer />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Landing}/>
+          <Route exact path="/home" component={Home}/>
+
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

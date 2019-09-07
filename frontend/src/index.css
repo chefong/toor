@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.ant-modal-header, .ant-modal-footer {
+  border: none;
+  display: none
+}

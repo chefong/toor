@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
+const style = {
+  width: '90%',
+  height: '90%',
+  margin: 'auto',
+}
+
 class MapContainer extends Component {
   constructor(props) {
     super(props);
@@ -38,10 +44,9 @@ class MapContainer extends Component {
     console.log(this.state.markers)
     return (
       <div>
-        <h1 className="text-center">YUHHHHHHHHHHHHHHHHHH</h1>
         <Map
           google={this.props.google}
-          style={{ width: "80%", margin: "auto" }}
+          style={style}
           className={"map"}
           zoom={14}
           onClick={this.onClick}
@@ -61,5 +66,5 @@ class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: ()
+  apiKey: ('AIzaSyBXRQGWepvcs75R20UmjLQTEGhWtsIORsc')
 })(MapContainer)
