@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { AutoComplete, Modal, Button, Input } from 'antd';
 import { universities } from '../../universities';
 import './Home.css';
 import MapContainer from '../MapContainer';
+import Item from '../Item/Item';
 
 const BASE_URL = "http://5938164a.ngrok.io";
 
@@ -14,7 +16,16 @@ class Home extends Component {
     isUploading: false,
     dataSource: [],
     selectedUniversity: '',
-    audioTours:[]
+    audioTours: [
+      {
+        id: 1,
+        rating: 2
+      },
+      {
+        id: 2,
+        rating: 4
+      }
+    ]
   }
 
   handleClick = () => {
@@ -70,18 +81,25 @@ class Home extends Component {
     return (
       <div className="home">
         <div className="container-fluid">
-          <h1 className="home__title">To͝or</h1>
+          <h1 className="title">To͝or</h1>
           <div className="row justify-content-center">
             <AutoComplete
               className="home__autocomplete"
               id="first"
               dataSource={this.state.dataSource}
-              style={{ width: '80%' }}
+              style={{ width: '304px' }}
               onSearch={this.onSearch}
               onSelect={this.onSelect}
               placeholder="Search for a university..."
             />
           </div>
+          {this.state.audioTours && this.state.audioTours.map(audioTour => {
+            return (
+              <NavLink to={`/home/audio-tour/${audioTour.id}`}>
+                <Item {...audioTour} />
+              </NavLink>
+            )
+          })}
           <div className="row justify-content-center">
             <Button className="home__plus" type="primary" onClick={this.handleClick}><span className="bold-me">+</span></Button>
           </div>
@@ -101,6 +119,7 @@ class Home extends Component {
                 onSelect={this.onSelect}
                 placeholder="Search for a university..."
               />
+              <Input className="home__input-title" placeholder="Title" />
               <input type="file" name="files" ref={this.inputRef} onChange={this.handleChange} multiple hidden/>
               <div className="row justify-content-center">
                 <Button type="primary" onClick={this.handleUploadButtonClick} ghost>Upload Files</Button>

@@ -3,7 +3,7 @@ import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 const style = {
   width: '90%',
-  height: '55%',
+  height: '50%',
   margin: 'auto',
   marginTop: '20%',
   position: 'relative'
@@ -48,7 +48,7 @@ class MapContainer extends Component {
         <Map
           google={this.props.google}
           style={style}
-          className={"map"}
+          className="map"
           zoom={14}
           onClick={this.onClick}
         >

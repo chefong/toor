@@ -5,11 +5,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 .ant-modal-header, .ant-modal-footer {
   border: none;
   display: none
@@ -22,10 +17,17 @@ code {
 
 @font-face {
   font-family: "SF Pro";
-  src: url('./assets/fonts/SF-Pro-Display-Heavy.otf');
-  font-weight: bolder;
+  src: url('./assets/fonts/SF-Pro-Display-Semibold.otf');
+  font-weight: 500;
 }
 
-input {
-  background-color: #979797;
+@font-face {
+  font-family: "SF Pro";
+  src: url('./assets/fonts/SF-Pro-Display-Heavy.otf');
+  font-weight: 700;
 }
+
+.ant-select-search {
+  background-color: #F5F5F5;
+}
+

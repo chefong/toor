@@ -1,0 +1,28 @@
+.item-container {
+  height: 100px;
+  width: 304px;
+  margin: 0 auto;
+  margin-bottom: 24px;
+  border-radius: 4px;
+  box-shadow: 0 0 14px rgb(228, 228, 228);
+}
+
+.item__location {
+  font-family: 'SF Pro';
+  color: #929292;
+  margin-left: 12px;
+  padding-top: 8px;
+}
+
+.item__title {
+  font-family: 'SF Pro';
+  font-weight: 500;
+  margin-left: 12px;
+  font-size: 20px;
+  margin-top: -18px;
+  margin-bottom: 0px;
+}
+
+.item__rate {
+  margin-left: 12px;
+}
