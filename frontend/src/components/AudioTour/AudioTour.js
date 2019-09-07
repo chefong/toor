@@ -5,8 +5,8 @@ import {Redirect} from 'react-router-dom';
 import MapContainer from '../MapContainer';
 import { Icon, AutoComplete, Modal, Button, Input } from 'antd';
 import Player from './AudioPlayer';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 const BASE_URL = "http://9db5910f.ngrok.io";
 
@@ -70,7 +70,11 @@ class AudioTour extends Component {
         {/* Audio player */}
         {/* < Player /> */}
         <div className="mapHolder">
-          <MapContainer height={"40%"} />
+          <MapContainer/>
+        </div>
+        <div className="carouselDiv">
+          <Icon type="left-circle" />
+          <Icon type="right-circle" />
         </div>
         {/* <div className="carousel-container row justify-content-center">
           <Carousel>

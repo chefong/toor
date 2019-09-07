@@ -63,3 +63,10 @@
 .phone-container, .rate-container {
   margin-left: 24px;
 }
+
+.carouselDiv {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  right: 0;
+}
