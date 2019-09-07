@@ -42,8 +42,12 @@
 }
 
 .audio-tour-container {
-  overflow: hidden;
-}
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin: 0;
+  padding: 0;
+
+ }
 
 .Title {
   text-align: center;

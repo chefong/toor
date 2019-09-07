@@ -133,7 +133,7 @@ class Landing extends Component {
           </div>
         </div>
         <div className="footer">
-          <div className="Innerfooter">Made with ♥ in Riverside, CA</div>
+          <div className="Innerfooter">Made with ♥ in Philadelphia, PA</div>
           <div className="Innerfooter">© 2019 R'side Boys</div>
         </div>
 
