@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "SF Pro";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -13,4 +13,19 @@ code {
 .ant-modal-header, .ant-modal-footer {
   border: none;
   display: none
+}
+
+@font-face {
+  font-family: "SF Pro";
+  src: url('./assets/fonts/SF-Pro-Display-Medium.otf')
+}
+
+@font-face {
+  font-family: "SF Pro";
+  src: url('./assets/fonts/SF-Pro-Display-Heavy.otf');
+  font-weight: bolder;
+}
+
+input {
+  background-color: #979797;
 }

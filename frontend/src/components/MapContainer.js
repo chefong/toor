@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { AutoComplete, Modal, Button, Input } from 'antd';
 
 const style = {
   width: '90%',
-  height: '90%',
+  height: '55%',
   margin: 'auto',
+  marginTop: '20%',
+  position: 'relative'
 }
 
 class MapContainer extends Component {
@@ -40,10 +43,40 @@ class MapContainer extends Component {
     });
   }
 
+  handleSubmitButtonClick = () => {
+    fetch("http://localhost:5000/pinpoints", {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        'markers': this.state.markers
+      }),
+      method: "POST",
+    })
+      .then(resp => resp.json())
+      .then(resp => {
+        if (resp.message) {
+          console.log("no response")
+        } else {
+          console.log("returned route")
+        }
+      })
+      .catch(err => console.log(err))
+  }
+
+  handleDeleteClick = () => {
+    let temp = this.state.markers
+    console.log(temp)
+    temp.pop()
+    this.setState({
+      markers: temp
+    })
+  }
+
   render() {
-    console.log(this.state.markers)
     return (
-      <div>
+      <div className="row justify-content-center">
+      <Button className="delete" onClick={this.handleDeleteClick}>Delete Previous</Button>
         <Map
           google={this.props.google}
           style={style}
@@ -60,6 +93,8 @@ class MapContainer extends Component {
             />
           ))}
         </Map>
+        <Button className="home__submit-button" type="primary" onClick={this.handleSubmitButtonClick}>Submit</Button>
+
       </div>
     );
   }

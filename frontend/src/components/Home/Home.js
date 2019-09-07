@@ -25,6 +25,9 @@ class Home extends Component {
     this.setState({ modalIsOpen: false });
   }
 
+  handleDeleteClick = () => {
+
+  }
   handleChange = e => {
     e.preventDefault();
 
@@ -102,12 +105,11 @@ class Home extends Component {
                 placeholder="Search for a university..."
               />
               <input type="file" name="files" ref={this.inputRef} onChange={this.handleChange} multiple hidden/>
-              <div className="row justify-content-center">
+              <div className="flex">
                 <Button type="primary" onClick={this.handleUploadButtonClick} ghost>Upload Files</Button>
               </div>
               <MapContainer />
               <div className="row justify-content-center">
-                <Button className="home__submit-button" type="primary" onClick={this.handleSubmitButtonClick}>Submit</Button>
               </div>
             </div>
           </Modal>
