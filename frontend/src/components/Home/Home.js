@@ -124,11 +124,12 @@ class Home extends Component {
               />
               <Input className="home__input-title" placeholder="Title" />
               <input type="file" name="files" ref={this.inputRef} onChange={this.handleChange} multiple hidden/>
-              <div className="flex">
+              <div className="row justify-content-center">
                 <Button type="primary" onClick={this.handleUploadButtonClick} ghost>Upload Files</Button>
               </div>
-              <MapContainer />
+              <MapContainer height={"50%"} />
               <div className="row justify-content-center">
+                <Button className="home__submit-button" type="primary" onClick={this.handleSubmitButtonClick}>Submit</Button>
               </div>
             </div>
           </Modal>

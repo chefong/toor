@@ -4,7 +4,6 @@ import { AutoComplete, Modal, Button, Input } from 'antd';
 
 const style = {
   width: '90%',
-  height: '50%',
   margin: 'auto',
   marginTop: '20%',
   position: 'relative'
@@ -78,7 +77,7 @@ class MapContainer extends Component {
       <div className="row justify-content-center">
         <Map
           google={this.props.google}
-          style={style}
+          style={{...style, height: this.props.height}}
           className="map"
           zoom={14}
           onClick={this.onClick}

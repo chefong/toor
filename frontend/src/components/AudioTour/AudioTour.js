@@ -37,10 +37,10 @@ class AudioTour extends Component {
       <div className="audio-tour-container">
         <Icon type="arrow-left" onClick={this.redirect} className="iconArrow"/>
         <div className="Title">
-          <h2 className="mainTitle">University of Pennsylvania</h2>
+          <p className="mainTitle">University of Pennsylvania</p>
         </div>
         <div className="mapHolder">
-          <MapContainer/>
+          <MapContainer height={"40%"} />
         </div>
         <Button type="primary" className="prev">Previous</Button>
         <Button type="primary" className="next">Next</Button>

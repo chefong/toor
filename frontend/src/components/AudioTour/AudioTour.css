@@ -23,8 +23,8 @@
 }
 
 .star {
-  position: absolute;
-  top: 90%;
+  /* position: absolute; */
+  margin-top: 625px;
   left: 0;
   right: 0;
 }
@@ -37,12 +37,20 @@
 }
 
 .mainTitle {
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 700;
+  text-align: left;
+  margin-left: 24px;
+  line-height: 100%;
+  margin-top: 24px;
 }
 
 .mapHolder {
   padding-top: 50px;
+}
+
+.audio-tour-container {
+  overflow: hidden;
 }
 
 .Title {

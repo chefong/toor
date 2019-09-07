@@ -90,7 +90,7 @@ class Landing extends Component {
               <img className="pinpoint" src={pinpoint}></img>
             </div>
             <div className="titleBox">
-            <h1 className="title">Toor</h1>
+            <h1 className="landing__title">Toor</h1>
             </div>
           </div>
           <div className="section2">
