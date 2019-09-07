@@ -50,20 +50,29 @@ class AudioTour extends Component {
       return <Redirect push to="/home" />
     }
 
-    const { rating, school } = this.props.location.state;
+    const { rating, school, title } = this.props.location.state;
 
     return (
       <div className="audio-tour-container">
         <Icon type="arrow-left" onClick={this.redirect} className="iconArrow"/>
+        <div className="row">
+          <p className="schoolTitle">{school}</p>
+        </div>
         <div className="Title">
-          <p className="mainTitle">{school}</p>
+          <p className="mainTitle">{title}</p>
+        </div>
+        <div className="rate-container row">
+          <Rate defaultValue={rating || 0} disabled={this.state.hasRated} className="audio-tour__rate" onChange={this.handleRate} />
+        </div>
+        <div className="phone-container">
+          Interested in staying updated?
         </div>
         {/* Audio player */}
         {/* < Player /> */}
         <div className="mapHolder">
           <MapContainer height={"40%"} />
         </div>
-        <div className="carousel-container">
+        <div className="carousel-container row justify-content-center">
           <Carousel>
             <div>
               <img src="assets/1.jpeg" />
@@ -78,9 +87,6 @@ class AudioTour extends Component {
               <p className="legend">Legend 3</p>
             </div>
           </Carousel>
-        </div>
-        <div className="row justify-content-center star">
-          <Rate defaultValue={rating || 0} disabled={this.state.hasRated} className="audio-tour__rate" onChange={this.handleRate} />
         </div>
       </div>
     )

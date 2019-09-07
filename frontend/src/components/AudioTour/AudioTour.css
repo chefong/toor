@@ -22,13 +22,6 @@
   right: 7%;
 }
 
-.star {
-  /* position: absolute; */
-  margin-top: 625px;
-  left: 0;
-  right: 0;
-}
-
 .iconArrow {
   position: relative;
   margin-top: 20px;
@@ -42,23 +35,32 @@
   text-align: left;
   margin-left: 24px;
   line-height: 100%;
-  margin-top: 24px;
   width: 80%;
+  margin-bottom: 4px;
 }
 
-.mapHolder {
-  padding-top: 50px;
+.schoolTitle {
+  text-align: left;
+  margin-left: 36px;
+  margin-bottom: 0px;
+  font-family: "SF Pro";
+  font-weight: 500;
+  margin-top: 24px;
 }
 
 .audio-tour-container {
   overflow: hidden;
+  height: 100vh;
 }
 
 .Title {
   text-align: center;
-  position: absolute;
 }
 
 .carousel-container {
-  
+  text-align: center;
+  margin-top: 500px
+}
+.phone-container, .rate-container {
+  margin-left: 24px;
 }
