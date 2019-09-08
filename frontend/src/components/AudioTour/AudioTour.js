@@ -78,14 +78,16 @@ class AudioTour extends Component {
     })
   }
 
-  handleRightClick = () => {
+  handleRightClick = e => {
+    e.preventDefault();
     const { link } = this.props.location.state;
     if (this.state.currentIndex < link.length - 1) {
       this.setState(prevState =>  ({ currentIndex: prevState.currentIndex + 1 }));
     }
   }
 
-  handleRightClick = () => {
+  handleLeftClick = e => {
+    e.preventDefault();
     if (this.state.currentIndex > 0) {
       this.setState(prevState =>  ({ currentIndex: prevState.currentIndex - 1 }));
     }
@@ -97,8 +99,6 @@ class AudioTour extends Component {
     }
     let player = <Alert className="audio-tour-warning" type="warning" message="No audio tours available for this campus."/>;
     const { rating, school, title, link } = this.props.location.state;
-    console.log(link)
-    console.log(link[0])
     if (link && link.length != 0) {
       player = <Player link={link[this.state.currentIndex]} />
     }
@@ -150,6 +150,9 @@ class AudioTour extends Component {
               <Button type="primary" className="left-button" onClick={this.handleLeftClick}>
                 <Icon className="left-arrow" type="caret-left" style={{ fontSize: '16px', color: '#FFFFFF' }} />
               </Button>
+            </div>
+            <div className="col-4">
+              <p className="count">{this.state.currentIndex}</p>
             </div>
             <div className="col-4">
               <Button type="primary" className="right-button" onClick={this.handleRightClick}>
