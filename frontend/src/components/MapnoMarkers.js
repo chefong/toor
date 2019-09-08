@@ -26,7 +26,7 @@ class MapNoMarkers extends Component {
 
   handleSubmitButtonClick = () => {
     console.log("hello")
-    fetch("http://9db5910f.ngrok.io/point", {
+    fetch("https://3bd63842.ngrok.io/point", {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -74,6 +74,7 @@ class MapNoMarkers extends Component {
           className="map"
           center={this.state.userLocation}
           zoom={14}
+          center={this.state.userLocation}
           initialCenter={this.state.userLocation}
         >
           {this.state.markers && this.state.markers.map((marker, index) => (

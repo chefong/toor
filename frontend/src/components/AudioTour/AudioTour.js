@@ -8,7 +8,7 @@ import MapNoMarkers from '../MapnoMarkers';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
-const BASE_URL = "http://3bd63842.ngrok.io";
+const BASE_URL = "https://3bd63842.ngrok.io";
 
 class AudioTour extends Component {
   state = {
