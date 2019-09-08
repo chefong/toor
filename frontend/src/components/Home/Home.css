@@ -36,10 +36,10 @@
 
 .bold-me {
   font-weight: 700;
+  border-radius: 10px;
 }
 
 .home__plus {
-  border-radius: 32px;
   margin-top: 32px;
   width: 30%;
 }
