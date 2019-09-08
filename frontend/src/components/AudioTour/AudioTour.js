@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { message, Rate, Form, Input, Icon, Popover, Button, Alert } from 'antd';
+import { message, Rate, Form, Input, Icon, Popover, Button, Alert, Tag } from 'antd';
 import './AudioTour.css';
 import {Redirect} from 'react-router-dom';
 import MapContainer from '../MapContainer';
@@ -137,7 +137,7 @@ class AudioTour extends Component {
             visible={this.state.isPopoverVisible}
             onVisibleChange={this.handleVisibleChange}
           >
-            Interested in staying updated?
+            <Tag color="geekblue" className="stay-updated" ghost>Click here to stay updated</Tag>
           </Popover>
         </div>
         <MapNoMarkers/>
