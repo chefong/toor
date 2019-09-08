@@ -79,6 +79,12 @@ class Home extends Component {
   handleSubmitButtonClick = e => {
     e.preventDefault();
 
+    const { files, selectedUniversity, title, markers } = this.state;
+    if (files.length == 0 || !selectedUniversity || !title || markers.length == 0) {
+      message.warn("One or more fields is missing!");
+      return;
+    }
+
     this.setState({ isFetching: true });
 
     const formData = new FormData();
@@ -199,11 +205,11 @@ class Home extends Component {
                   <Input className="home__input-title" placeholder="Title" name="title" onChange={this.handleTitleInput} />
                   <input type="file" name="files" ref={this.inputRef} onChange={this.handleChange} multiple hidden/>
                   <div className="row justify-content-center">
-                    <Button type="primary" onClick={this.handleUploadButtonClick} ghost>Upload Files</Button>
+                    <Button type="primary" onClick={this.handleUploadButtonClick} ghost><span className="bold-me">Upload Files</span></Button>
                   </div>
                   <MapContainer updateMarkers={this.updateMarkers}/>
                   <div className="row justify-content-center">
-                    <Button className="home__submit-button" type="primary" loading={this.state.isFetching} onClick={this.handleSubmitButtonClick}>Submit</Button>
+                    <Button className="home__submit-button" type="primary" loading={this.state.isFetching} onClick={this.handleSubmitButtonClick}><span className="bold-me">Submit</span></Button>
                   </div>
                 </div>
               </Modal>

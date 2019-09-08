@@ -103,7 +103,7 @@ class Landing extends Component {
               </div>
               <div className="row justify-content-center">
                 <NavLink to="/home">
-                  <Button type="primary" id="get-started">Get Started</Button>
+                  <Button type="primary" id="get-started"><span className="bold-me">Get Started</span></Button>
                 </NavLink>
               </div>
             </div>
