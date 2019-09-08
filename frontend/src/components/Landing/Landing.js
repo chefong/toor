@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon, Button } from 'antd';
+import { Icon, Button, Switch} from 'antd';
 import { NavLink, Redirect } from 'react-router-dom';
 import './Landing.css';
 import Particles from 'react-particles-js';
@@ -68,7 +68,9 @@ class Landing extends Component {
     this.state = {
       Email: '',
       Password: '',
-      Redirect: false
+      Redirect: false,
+      bgColor: '',
+      colorChange: false
     }
   }
 
@@ -78,16 +80,34 @@ class Landing extends Component {
     });
   }
 
+  darkMode = () => {
+    if (this.state.colorChange === false){
+      this.setState({
+        bgColor: '#696969',
+        colorChange: true
+      })
+    }
+    else {
+      this.setState({
+        bgColor: 'white',
+        colorChange: false
+      })
+    }
+  }
+
   render(){
     if (this.state.Redirect){
       return <Redirect to={{ pathname: '/home' }} />
     }
 
     return(
-      <div className="landing-container">
+      <div className="landing-container" style={{backgroundColor: this.state.bgColor}}>
         <div className="container-fluid">
           <div className="row">
             <p className="landing__header">To͝or</p>
+            <div className="toggle" onClick={this.darkMode}>
+              <Switch/>
+            </div>
           </div>
           <div className="row justify-content-center">
             <Particles className="particles" params={particlesOptions} />

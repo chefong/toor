@@ -153,9 +153,16 @@ button:focus {
   font-family: "SF Pro";
   font-weight: 700;
   margin-top: 16px;
-  margin-left: 16px;
+  margin-left: 30px;
   font-size: 24px;
   margin-bottom: -4px;
+}
+
+.toggle{
+  margin-top: 23px;
+  margin-left: 220px;
+  margin-bottom: -4px;
+
 }
 
 .landing-title-description {

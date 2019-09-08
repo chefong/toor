@@ -152,7 +152,7 @@ class AudioTour extends Component {
               </Button>
             </div>
             <div className="col-4">
-              <p className="count">{this.state.currentIndex}</p>
+              <p className="count">{this.state.currentIndex + 1}</p>
             </div>
             <div className="col-4">
               <Button type="primary" className="right-button" onClick={this.handleRightClick}>
