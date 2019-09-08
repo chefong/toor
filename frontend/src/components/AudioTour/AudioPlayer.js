@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactPlayer from 'react-player'
 
 const playerStyle={
-  marginTop: '504px',
+  marginTop: '400px',
   position: 'absolute'
 }
 

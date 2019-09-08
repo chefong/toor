@@ -105,9 +105,6 @@ class Landing extends Component {
         <div className="container-fluid">
           <div className="row">
             <p className="landing__header">To͝or</p>
-            <div className="toggle" onClick={this.darkMode}>
-              <Switch/>
-            </div>
           </div>
           <div className="row justify-content-center">
             <Particles className="particles" params={particlesOptions} />
@@ -144,13 +141,13 @@ class Landing extends Component {
               <div className="info-item">
                 <img className="info-item-image" src={checked} alt=""/>
                 <p className="info-description">
-                  Have the opportunity to experience different campuses throughout the world right from your phone. Other users are able to show you around campus without having to be there, no traveling necessary!
+                  Let people who are passionate about their past experiences show you the world through your ears.
                 </p>
               </div>
               <div className="info-item">
                 <img className="info-item-image" src={lightBulb} alt=""/>
                 <p className="info-description">
-                  Have the opportunity to experience different campuses throughout the world right from your phone. Other users are able to show you around campus without having to be there, no traveling necessary!
+                  Ever wondered what it's like to experience something halfway across the world? Our services are able to help bring that reality to you by making old places new again.
                 </p>
               </div>
             </div>

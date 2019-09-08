@@ -11,7 +11,7 @@ import GeoSuggest from '../GeoSuggest';
 Geocode.setApiKey(process.env.REACT_APP_GOOGLE);
 Geocode.enableDebug();
 
-const BASE_URL = "https://3bd63842.ngrok.io";
+const BASE_URL = "https://716222bc.ngrok.io";
 const spinner = require('../../assets/imgs/spinner.svg');
 
 class Home extends Component {

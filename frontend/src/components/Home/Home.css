@@ -1,5 +1,5 @@
 .ant-modal-content {
-  height: 90vh;
+  height: 100vh;
 }
 
 .ant-modal-header {
@@ -17,7 +17,8 @@
 
 .home__submit-button {
   position: absolute;
-  margin-top: 464px;
+  margin-top: 425px;
+  margin-bottom: 50px;
 }
 
 .title {
@@ -40,8 +41,9 @@
 }
 
 .home__plus {
-  margin-top: 32px;
+  margin-top: 22px;
   width: 30%;
+  margin-bottom: 40px;
 }
 
 .ant-btn-primary {
