@@ -142,7 +142,7 @@ class Home extends Component {
       .then(response => response.json())
       .then(data => {
         console.log(data)
-        const searchResults = data.map(({ id, link, rating, school, title }) => ({ id, link, rating, school, title }));
+        const searchResults = data.map(({ id, link, rating, school, title, markers }) => ({ id, link, rating, school, title, markers }));
         console.log('searchResult' , searchResults);
         this.setState({ searchResults, isFetching: false });
       })

@@ -4,6 +4,7 @@ import './AudioTour.css';
 import {Redirect} from 'react-router-dom';
 import MapContainer from '../MapContainer';
 import Player from './AudioPlayer';
+import MapNoMarkers from '../MapnoMarkers';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
@@ -81,11 +82,12 @@ class AudioTour extends Component {
       return <Redirect push to="/home" />
     }
     let player = <div></div>;
-    const { rating, school, title, link } = this.props.location.state;
+    const { rating, school, title, link, markers } = this.props.location.state;
     if(link != null && link.length != 0) {
-      player = 
+      player =
       <Player link={this.props.location.state.link[0]} />
     }
+    console.log(this.props.location.state.markers)
 
     return (
       <div className="audio-tour-container">
@@ -126,7 +128,7 @@ class AudioTour extends Component {
 
         {/* Audio player */}
          {/* < Player link={this.props.location.state.link[0]} /> */}
-        <MapContainer/>
+        <MapNoMarkers/>
         <div className="carouselDiv">
           <div className="row justify-content-center">
             <div className="left-arrow-container col-3">
