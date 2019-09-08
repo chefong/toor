@@ -72,6 +72,7 @@ class MapNoMarkers extends Component {
           google={this.props.google}
           style={{...style, height: this.props.height}}
           className="map"
+          center={this.state.userLocation}
           zoom={14}
           initialCenter={this.state.userLocation}
         >

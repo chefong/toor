@@ -44,8 +44,6 @@
 .audio-tour-container {
   overflow-x: hidden;
   overflow-y: hidden;
-  margin: 0;
-  padding: 0;
 
  }
 
@@ -62,10 +60,10 @@
 }
 
 .carouselDiv {
-  margin-top: 564px;
+  position: absolute;
+  top: 85%;
   left: 0;
   right: 0;
-  margin-bottom: 32px;
 }
 
 .popover-description {
@@ -76,30 +74,6 @@
   text-align: center;
 }
 
-.left-arrow-container {
-  text-align: right;
-}
-
 .left-button {
-  margin-right: 16px;
-}
-
-.right-button {
-  margin-left: 16px;
-}
-
-.audio-tour-warning {
-  position: absolute;
-  margin-top: 500px;
-}
-
-.count {
-  font-family: "SF Pro";
-  font-weight: 700;
-  text-align: center;
-  font-size: 18px;
-}
-
-.stay-updated {
-  margin-top: 8px;
+  margin-left: 20px;
 }
