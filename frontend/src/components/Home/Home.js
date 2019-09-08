@@ -5,14 +5,13 @@ import { universities } from '../../universities';
 import './Home.css';
 import MapContainer from '../MapContainer';
 import Item from '../Item/Item';
-import {Animated} from "react-animated-css";
 import Geocode from "react-geocode";
-
+import GeoSuggest from '../GeoSuggest';
 
 Geocode.setApiKey(process.env.REACT_APP_GOOGLE);
 Geocode.enableDebug();
 
-const BASE_URL = "http://3bd63842.ngrok.io";
+const BASE_URL = "https://3bd63842.ngrok.io";
 const spinner = require('../../assets/imgs/spinner.svg');
 
 class Home extends Component {
@@ -22,7 +21,7 @@ class Home extends Component {
     modalIsOpen: false,
     isFetching: false,
     dataSource: [],
-    selectedUniversity: '',
+    searchValue: '',
     title: '',
     link: '',
     files: [],
@@ -65,6 +64,7 @@ class Home extends Component {
     e.preventDefault();
     const files = e.target.files;
     this.setState({ files });
+    message.success(`${files.length} files have been received`);
   }
 
   handleUploadButtonClick = () => {
@@ -78,7 +78,7 @@ class Home extends Component {
   }
 
   onModalSearchSelect = value => {
-    this.setState({ selectedUniversity: value });
+    this.setState({ searchValue: value });
 
     Geocode.fromAddress(value).then(
       response => {
@@ -94,8 +94,8 @@ class Home extends Component {
   handleSubmitButtonClick = e => {
     e.preventDefault();
 
-    const { files, selectedUniversity, title, markers } = this.state;
-    if (files.length == 0 || !selectedUniversity || !title || markers.length == 0) {
+    const { files, searchValue: searchValue, title, markers } = this.state;
+    if (files.length == 0 || !searchValue || !title || markers.length == 0) {
       message.warn("One or more fields is missing!");
       return;
     }
@@ -107,7 +107,7 @@ class Home extends Component {
       formData.append('files', file)
     })
 
-    formData.append('school', this.state.selectedUniversity);
+    formData.append('school', this.state.searchValue);
     formData.append('title', this.state.title);
     for (var i = 0; i < this.state.markers.length; i++) {
       formData.append(i, JSON.stringify(this.state.markers[i].position));
@@ -151,7 +151,7 @@ class Home extends Component {
       .then(response => response.json())
       .then(data => {
         console.log(data)
-        const searchResults = data.map(({ id, link, rating, school, title,  }) => ({ id, link, rating, school, title }));
+        const searchResults = data.map(({ id, link, rating, school, title, markers }) => ({ id, link, rating, school, title, markers }));
         console.log('searchResults', searchResults);
         this.setState({ searchResults, isFetching: false });
       })
@@ -170,7 +170,7 @@ class Home extends Component {
             <h1 className="title">To͝or</h1>
           </Link>
           <div className="row justify-content-center">
-            <AutoComplete
+            {/* <AutoComplete
               className="home__autocomplete"
               id="first"
               dataSource={this.state.dataSource}
@@ -178,7 +178,10 @@ class Home extends Component {
               onSearch={this.onSearch}
               onSelect={this.onSearchSelect}
               placeholder="Search for a university..."
-            />
+            /> */}
+            <div className="col-11">
+              <GeoSuggest invokeModalSearch={false} onSearchSelect={this.onSearchSelect} />
+            </div>
           </div>
           {this.state.isFetching
             ? <div className="spinner-container">
@@ -209,14 +212,9 @@ class Home extends Component {
                 width="90vw"
               >
                 <div className="container-fluid">
-                  <AutoComplete
-                    className="home__autocomplete"
-                    dataSource={this.state.dataSource}
-                    style={{ width: '100%' }}
-                    onSearch={this.onSearch}
-                    onSelect={this.onModalSearchSelect}
-                    placeholder="Search for a university..."
-                  />
+                  <div className="geosuggest-container">
+                    <GeoSuggest invokeModalSearch onModalSearchSelect={this.onModalSearchSelect} />
+                  </div>
                   <Input className="home__input-title" placeholder="Title" name="title" onChange={this.handleTitleInput} />
                   <input type="file" name="files" ref={this.inputRef} onChange={this.handleChange} multiple hidden/>
                   <div className="row justify-content-center">

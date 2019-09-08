@@ -12,7 +12,7 @@
 
 .home__autocomplete {
   margin-bottom: 16px;
-  margin-top: 64px;
+  /* margin-top: 64px; */
 }
 
 .home__submit-button {
@@ -58,4 +58,13 @@
 
 .spinner {
   margin: 0 auto;
+}
+
+.geosuggest-input {
+  /* margin-top: 64px; */
+  margin-bottom: 12px;
+}
+
+.geosuggest-container {
+  padding-top: 64px;
 }

@@ -14,13 +14,7 @@ class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      markers: [
-        {
-          title: "",
-          name: "",
-          position: { lat: 39.9522, lng: -75.1932 }
-        }
-      ],
+      markers: [],
       userLocation: { lat: 39.9522, lng: -75.1932 }
     };
   }
