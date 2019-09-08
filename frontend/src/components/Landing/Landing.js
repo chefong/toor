@@ -3,6 +3,7 @@ import { Icon, Button } from 'antd';
 import { NavLink, Redirect } from 'react-router-dom';
 import './Landing.css';
 import Particles from 'react-particles-js';
+import Typing from 'react-typing-animation';
 
 const globe = require('../../assets/imgs/circleMap.svg');
 const phone = require('../../assets/imgs/phone.svg');
@@ -92,7 +93,10 @@ class Landing extends Component {
             <Particles className="particles" params={particlesOptions} />
             <div className="landing__left col-md-6">
               <div className="row justify-content-center">
-                <h1 id="landing-title">Audible Experiences Start Here.</h1>
+              
+                <h1 id="landing-title">Audible Experiences 
+                <Typing speed={70}>Start Here.</Typing>
+                </h1>
               </div>
               <div className="row justify-content-center">
                 <p className="landing-title-description">Experience university campuses right from your phone.</p>
