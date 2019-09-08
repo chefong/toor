@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import { Link } from 'react-router-dom';
-import { message, Alert, AutoComplete, Modal, Button, Input } from 'antd';
+import { message, Alert, Modal, Button, Input } from 'antd';
 import { universities } from '../../universities';
 import './Home.css';
 import MapContainer from '../MapContainer';
@@ -27,12 +27,16 @@ class Home extends Component {
     files: [],
     searchResults: [],
     markers: [],
-    queryCoordinates: null
+    queryCoordinates: null,
+    recentlySearchedLocation: ''
   }
 
   componentDidMount = () => {
     this.setState({ isFetching: true });
-    fetch(`${BASE_URL}/selectN/4`)
+
+    if (this.state.recentlySearchedLocation) {
+      console.log('using previous location to search', this.state.recentlySearchedLocation)
+      fetch(`${BASE_URL}/getByLocation/${this.state.recentlySearchedLocation}`)
       .then(response => response.json())
       .then(data => {
         console.log(data)
@@ -43,6 +47,19 @@ class Home extends Component {
         console.error(error);
         this.setState({ isFetching: false });
       });
+    } else {
+      fetch(`${BASE_URL}/selectN/4`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          const searchResults = data.map(({ id, rating, school, title , link, markers }) => ({ id, rating, school, title, link, markers }));
+          this.setState({ searchResults, isFetching: false });
+        })
+        .catch(error => {
+          console.error(error);
+          this.setState({ isFetching: false });
+        });
+    }
   }
 
   updateMarkers = (temp) => {
@@ -122,12 +139,17 @@ class Home extends Component {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        message.success("Your audio tour has successfully been submitted! The page will refresh in 2 seconds.");
+        message.success("Your audio tour has successfully been submitted!");
         this.setState({
-          isFetching: false,
           modalIsOpen: false
         });
-        setTimeout(() => window.location.reload(), 2000);
+        fetch(`${BASE_URL}/getByLocation/${this.state.searchValue}`)
+          .then(response => response.json())
+          .then(dataObj => {
+            console.log(dataObj)
+            const searchResults = dataObj.map(({ id, rating, school, title , link, markers }) => ({ id, rating, school, title, link, markers }));
+            this.setState({ searchResults, isFetching: false });
+          })
       })
       .catch(error => {
         console.error(error);

@@ -13,13 +13,7 @@ class MapNoMarkers extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      markers: [
-        {
-          title: "",
-          name: "",
-          position: { lat: 39.9522, lng: -75.1932 }
-        }
-      ],
+      markers: [],
       userLocation: { lat: 0, lng: 0 }
     };
   }
@@ -65,7 +59,7 @@ class MapNoMarkers extends Component {
 
   render() {
     console.log(this.state.userLocation)
-    console.log(this.props.markings)
+    console.log("got markings from props", this.props.markings)
     return (
       <div className="row justify-content-center">
         {this.state.userLocation && <Map
@@ -76,10 +70,10 @@ class MapNoMarkers extends Component {
           center={this.state.userLocation}
           initialCenter={this.state.userLocation}
         >
-          {this.state.markers && this.state.markers.map((marker, index) => (
+          {this.props.markings && this.props.markings.map((marking, index) => (
             <Marker
               key={index}
-              position={marker.position}
+              position={marking}
             />
           ))}
         </Map>}
