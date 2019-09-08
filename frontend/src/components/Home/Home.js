@@ -6,7 +6,11 @@ import './Home.css';
 import MapContainer from '../MapContainer';
 import Item from '../Item/Item';
 import {Animated} from "react-animated-css";
+import Geocode from "react-geocode";
 
+
+Geocode.setApiKey(process.env.REACT_APP_GOOGLE);
+Geocode.enableDebug();
 
 const BASE_URL = "http://3bd63842.ngrok.io";
 const spinner = require('../../assets/imgs/spinner.svg');
@@ -23,7 +27,8 @@ class Home extends Component {
     link: '',
     files: [],
     searchResults: [],
-    markers: []
+    markers: [],
+    queryCoordinates: null
   }
 
   componentDidMount = () => {
@@ -74,6 +79,16 @@ class Home extends Component {
 
   onModalSearchSelect = value => {
     this.setState({ selectedUniversity: value });
+
+    Geocode.fromAddress(value).then(
+      response => {
+        const { lat, lng } = response.results[0].geometry.location;
+        this.setState({ queryCoordinates: { lat, lng }});
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 
   handleSubmitButtonClick = e => {
@@ -207,7 +222,7 @@ class Home extends Component {
                   <div className="row justify-content-center">
                     <Button type="primary" onClick={this.handleUploadButtonClick} ghost><span className="bold-me">Upload Files</span></Button>
                   </div>
-                  <MapContainer updateMarkers={this.updateMarkers}/>
+                  <MapContainer queryCoordinates={this.state.queryCoordinates} updateMarkers={this.updateMarkers}/>
                   <div className="row justify-content-center">
                     <Button className="home__submit-button" type="primary" loading={this.state.isFetching} onClick={this.handleSubmitButtonClick}><span className="bold-me">Submit</span></Button>
                   </div>

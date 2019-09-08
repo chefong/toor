@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@google/maps": "^0.5.5",
     "animate.css": "^3.7.2",
     "antd": "^3.23.2",
     "babel-plugin-import": "^1.12.1",
