@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { message, Rate, Form, Input, Icon, Popover, Button } from 'antd';
+import { message, Rate, Form, Input, Icon, Popover, Button, Alert } from 'antd';
 import './AudioTour.css';
 import {Redirect} from 'react-router-dom';
 import MapContainer from '../MapContainer';
@@ -8,14 +8,15 @@ import MapNoMarkers from '../MapnoMarkers';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
-const BASE_URL = "http://9db5910f.ngrok.io";
+const BASE_URL = "http://3bd63842.ngrok.io";
 
 class AudioTour extends Component {
   state = {
     isFetching: false,
     hasRated: false,
     isPopoverVisible: false,
-    isPopoverLoading: false
+    isPopoverLoading: false,
+    currentIndex: 0
   }
 
   handleVisibleChange = isPopoverVisible => {
@@ -77,21 +78,35 @@ class AudioTour extends Component {
     })
   }
 
+  handleRightClick = () => {
+    const { link } = this.props.location.state;
+    if (this.state.currentIndex < link.length - 1) {
+      this.setState(prevState =>  ({ currentIndex: prevState.currentIndex + 1 }));
+    }
+  }
+
+  handleRightClick = () => {
+    if (this.state.currentIndex > 0) {
+      this.setState(prevState =>  ({ currentIndex: prevState.currentIndex - 1 }));
+    }
+  }
+
   render() {
     if (this.state.redirecting){
       return <Redirect push to="/home" />
     }
-    let player = <div className="ml-4">No audio available</div>;;
+    let player = <Alert className="audio-tour-warning" type="warning" message="No audio tours available for this campus."/>;
     const { rating, school, title, link } = this.props.location.state;
-    if(link != null && link.length != 0) {
-      player =
-      <Player link={this.props.location.state.link[0]} />
+    console.log(link)
+    console.log(link[0])
+    if (link && link.length != 0) {
+      player = <Player link={link[this.state.currentIndex]} />
     }
-    console.log(this.props.location.state.markers)
+    console.log(this.props.location.state.link)
 
     return (
       <div className="audio-tour-container">
-        <Icon type="arrow-left" onClick={this.redirect} className="iconArrow"/>
+        <Icon type="arrow-left" onClick={() => window.location.href = "/home"} className="iconArrow"/>
         <div className="row">
           <p className="schoolTitle">{school}</p>
         </div>
@@ -125,45 +140,24 @@ class AudioTour extends Component {
             Interested in staying updated?
           </Popover>
         </div>
-
-        {/* Audio player */}
-         {/* < Player link={this.props.location.state.link[0]} /> */}
         <MapNoMarkers/>
+        <div className="row justify-content-center">
+          {player}
+        </div>
         <div className="carouselDiv">
           <div className="row justify-content-center">
-            <div className="left-arrow-container col-3">
-              <Button type="primary" className="left-button">
+            <div className="left-arrow-container col-4">
+              <Button type="primary" className="left-button" onClick={this.handleLeftClick}>
                 <Icon className="left-arrow" type="caret-left" style={{ fontSize: '16px', color: '#FFFFFF' }} />
               </Button>
             </div>
-            <div className="col-6">
-              <div className="audio-container">
-                audio file goes here
-              </div>
-            </div>
-            <div className="col-3">
-              <Button type="primary">
+            <div className="col-4">
+              <Button type="primary" className="right-button" onClick={this.handleRightClick}>
                 <Icon classname="right-arrow" type="caret-right" style={{ fontSize: '16px', color: '#FFFFFF' }} />
               </Button>
             </div>
           </div>
         </div>
-        {/* <div className="carousel-container row justify-content-center">
-          <Carousel>
-            <div>
-              <img src="assets/1.jpeg" />
-              <p className="legend">Legend 1</p>
-            </div>
-            <div>
-              <img src="assets/2.jpeg" />
-              <p className="legend">Legend 2</p>
-            </div>
-            <div>
-              <img src="assets/3.jpeg" />
-              <p className="legend">Legend 3</p>
-            </div>
-          </Carousel>
-        </div> */}
       </div>
     )
   }

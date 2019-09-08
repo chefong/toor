@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import ReactPlayer from 'react-player'
 
 const playerStyle={
-  marginLeft: '16px',
-  marginRight: '16px',
+  marginTop: '504px',
+  position: 'absolute'
 }
 
 class AudioPlayer extends Component {
@@ -11,8 +11,8 @@ class AudioPlayer extends Component {
     return <ReactPlayer controls={true}
      url={this.props.link}
      fileConfig={{ forceAudio: true }}
-     width="90%"
-     height="50px"
+     width="80%"
+     height="35px"
      style={playerStyle}
      playing />
   }

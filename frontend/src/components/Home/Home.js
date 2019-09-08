@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import { Link } from 'react-router-dom';
-import { message, AutoComplete, Modal, Button, Input } from 'antd';
+import { message, Alert, AutoComplete, Modal, Button, Input } from 'antd';
 import { universities } from '../../universities';
 import './Home.css';
 import MapContainer from '../MapContainer';
@@ -8,7 +8,7 @@ import Item from '../Item/Item';
 import {Animated} from "react-animated-css";
 
 
-const BASE_URL = "http://b16664ee.ngrok.io";
+const BASE_URL = "http://3bd63842.ngrok.io";
 const spinner = require('../../assets/imgs/spinner.svg');
 
 class Home extends Component {
@@ -23,20 +23,6 @@ class Home extends Component {
     link: '',
     files: [],
     searchResults: [],
-    audioTours: [
-      {
-        id: 1,
-        rating: 2
-      },
-      {
-        id: 2,
-        rating: 4
-      },
-      {
-        id: 3,
-        rating: 4
-      }
-    ],
     markers: []
   }
 
@@ -45,7 +31,7 @@ class Home extends Component {
     fetch(`${BASE_URL}/selectN/4`)
       .then(response => response.json())
       .then(data => {
-        const searchResults = data.map(({ id, rating, school, title }) => ({ id, rating, school, title }));
+        const searchResults = data.map(({ id, rating, school, title , link, markers }) => ({ id, rating, school, title, link, markers }));
         this.setState({ searchResults, isFetching: false });
       })
       .catch(error => {
@@ -114,11 +100,12 @@ class Home extends Component {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        message.success("Your audio tour has successfully been submitted!");
+        message.success("Your audio tour has successfully been submitted! The page will refresh in 2 seconds.");
         this.setState({
           isFetching: false,
           modalIsOpen: false
         });
+        setTimeout(() => window.location.reload(), 2000);
       })
       .catch(error => {
         console.error(error);
@@ -142,8 +129,8 @@ class Home extends Component {
       .then(response => response.json())
       .then(data => {
         console.log(data)
-        const searchResults = data.map(({ id, link, rating, school, title, markers }) => ({ id, link, rating, school, title, markers }));
-        console.log('searchResult' , searchResults);
+        const searchResults = data.map(({ id, link, rating, school, title }) => ({ id, link, rating, school, title }));
+        console.log('searchResults', searchResults);
         this.setState({ searchResults, isFetching: false });
       })
       .catch(error => {
@@ -186,10 +173,10 @@ class Home extends Component {
                 )
               })}
               {
-                (this.state.searchResults.length == 0)? ( <div> No audio tour available </div>) : <div></div>
+                (this.state.searchResults.length == 0)? (<Alert message="No audio tours available for this campus." type="warning"/>) : <div></div>
               }
               <div className="row justify-content-center">
-                <Button shape="round" className="home__plus" type="primary" onClick={this.handleClick}><span className="bold-me">+</span></Button>
+                <Button shape="round" className="home__plus" type="primary" onClick={this.handleClick}><span className="bold-me">+ Create</span></Button>
               </div>
               <Modal
                 centered

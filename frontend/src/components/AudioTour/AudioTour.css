@@ -62,9 +62,10 @@
 }
 
 .carouselDiv {
-  margin-top: 532px;
+  margin-top: 564px;
   left: 0;
   right: 0;
+  margin-bottom: 32px;
 }
 
 .popover-description {
@@ -75,6 +76,19 @@
   text-align: center;
 }
 
+.left-arrow-container {
+  text-align: right;
+}
+
 .left-button {
-  margin-left: 24px;
+  margin-right: 16px;
+}
+
+.right-button {
+  margin-left: 16px;
+}
+
+.audio-tour-warning {
+  position: absolute;
+  margin-top: 500px;
 }
