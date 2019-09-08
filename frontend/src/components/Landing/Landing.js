@@ -93,13 +93,13 @@ class Landing extends Component {
             <Particles className="particles" params={particlesOptions} />
             <div className="landing__left col-md-6">
               <div className="row justify-content-center">
-              
-                <h1 id="landing-title">Audible Experiences 
+
+                <h1 id="landing-title">Audible Experiences
                 <Typing speed={70}>Start Here.</Typing>
                 </h1>
               </div>
               <div className="row justify-content-center">
-                <p className="landing-title-description">Experience university campuses right from your phone.</p>
+                <p className="landing-title-description">Experience new adventures right from your phone.</p>
               </div>
               <div className="row justify-content-center">
                 <NavLink to="/home">
@@ -118,7 +118,7 @@ class Landing extends Component {
               <div className="info-item">
                 <img className="info-item-image" src={phone} alt=""/>
                 <p className="info-description">
-                  Have the opportunity to experience different campuses throughout the world right from your phone. Other users are able to show you around campus without having to be there, no traveling necessary!
+                  Have the opportunity to experience different place throughout the world right from your phone. Other users are able to show you around without having to be there, no traveling necessary!
                 </p>
               </div>
               <div className="info-item">
@@ -138,7 +138,7 @@ class Landing extends Component {
         </div>
         <div className="footer">
           <div className="Innerfooter">Made with ♥ in Philadelphia, PA</div>
-          <div className="Innerfooter">© 2019 R'side Boys</div>
+          <div className="Innerfooter">© 2019 KirbyDownB</div>
         </div>
 
       </div>
