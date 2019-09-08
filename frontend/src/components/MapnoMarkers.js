@@ -17,10 +17,10 @@ class MapNoMarkers extends Component {
         {
           title: "",
           name: "",
-          position: { lat: 39.9522, lng: 75.1932 }
+          position: { lat: 39.9522, lng: -75.1932 }
         }
       ],
-      userLocation: { lat: 39.9522, lng: -75.1932 }
+      userLocation: { lat: 0, lng: 0 }
     };
   }
 
@@ -47,6 +47,13 @@ class MapNoMarkers extends Component {
       .catch(err => console.log(err))
   }
 
+  componentDidMount (){
+    console.log('hey im inside componentDidMount', this.props.markings)
+    this.setState({
+      userLocation: this.props.markings[0]
+    })
+  }
+
   handleDeleteClick = () => {
     let temp = this.state.markers
     console.log(temp)
@@ -57,9 +64,11 @@ class MapNoMarkers extends Component {
   }
 
   render() {
+    console.log(this.state.userLocation)
+    console.log(this.props.markings)
     return (
       <div className="row justify-content-center">
-        <Map
+        {this.state.userLocation && <Map
           google={this.props.google}
           style={{...style, height: this.props.height}}
           className="map"
@@ -72,7 +81,7 @@ class MapNoMarkers extends Component {
               position={marker.position}
             />
           ))}
-        </Map>
+        </Map>}
       </div>
     );
   }

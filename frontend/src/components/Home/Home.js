@@ -31,6 +31,7 @@ class Home extends Component {
     fetch(`${BASE_URL}/selectN/4`)
       .then(response => response.json())
       .then(data => {
+        console.log(data)
         const searchResults = data.map(({ id, rating, school, title , link, markers }) => ({ id, rating, school, title, link, markers }));
         this.setState({ searchResults, isFetching: false });
       })
@@ -129,7 +130,7 @@ class Home extends Component {
       .then(response => response.json())
       .then(data => {
         console.log(data)
-        const searchResults = data.map(({ id, link, rating, school, title }) => ({ id, link, rating, school, title }));
+        const searchResults = data.map(({ id, link, rating, school, title,  }) => ({ id, link, rating, school, title }));
         console.log('searchResults', searchResults);
         this.setState({ searchResults, isFetching: false });
       })
@@ -140,6 +141,7 @@ class Home extends Component {
   }
 
   render() {
+    console.log(this.state.searchResults)
     return (
       <div className="home">
         <div className="container-fluid">

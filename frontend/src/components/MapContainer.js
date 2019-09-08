@@ -9,6 +9,7 @@ const style = {
   position: 'relative'
 }
 
+
 class MapContainer extends Component {
   constructor(props) {
     super(props);

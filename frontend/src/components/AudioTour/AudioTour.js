@@ -98,7 +98,7 @@ class AudioTour extends Component {
       return <Redirect push to="/home" />
     }
     let player = <Alert className="audio-tour-warning" type="warning" message="No audio tours available for this campus."/>;
-    const { rating, school, title, link } = this.props.location.state;
+    const { rating, school, title, link, markings } = this.props.location.state;
     if (link && link.length != 0) {
       player = <Player link={link[this.state.currentIndex]} />
     }
@@ -140,7 +140,7 @@ class AudioTour extends Component {
             Interested in staying updated?
           </Popover>
         </div>
-        <MapNoMarkers/>
+        <MapNoMarkers markings={this.props.location.state.markers}/>
         <div className="row justify-content-center">
           {player}
         </div>
