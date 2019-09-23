@@ -1,7 +1,7 @@
 
 <h1 align="center"
 <br>
-<p align="center"><img src="" width="35%"/></p>
+<p align="center"><img src="https://github.com/ericong18/toor/blob/master/frontend/src/logo.svg" width="35%"/></p>
 <br>
 Toor
 <br>
