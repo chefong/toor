@@ -8,13 +8,15 @@ const playerStyle={
 
 class AudioPlayer extends Component {
   render () {
-    return <ReactPlayer controls={true}
-     url={this.props.link}
-     fileConfig={{ forceAudio: true }}
-     width="80%"
-     height="35px"
-     style={playerStyle}
-     playing />
+    return <ReactPlayer
+      controls={true}
+      url={this.props.link}
+      fileConfig={{ forceAudio: true }}
+      width="80%"
+      height="35px"
+      style={playerStyle}
+      playing
+    />
   }
 }
 

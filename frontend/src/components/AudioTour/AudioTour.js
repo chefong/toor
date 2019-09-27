@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import { message, Rate, Form, Input, Icon, Popover, Button, Alert, Tag } from 'antd';
 import './AudioTour.css';
 import {Redirect} from 'react-router-dom';
-import MapContainer from '../MapContainer';
 import Player from './AudioPlayer';
-import MapNoMarkers from '../MapnoMarkers';
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import MapNoMarkers from '../MapNoMarkers';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-
-const BASE_URL = "https://716222bc.ngrok.io";
+import { BASE_URL } from '../../constants';
 
 class AudioTour extends Component {
   state = {
@@ -35,7 +32,6 @@ class AudioTour extends Component {
       })
         .then(response => response.json())
         .then(data => {
-          console.log(data);
           message.success("Your rating has successfully been recorded!", 3);
           this.setState({ hasRated: true });
         })
@@ -60,8 +56,7 @@ class AudioTour extends Component {
       body: formData
     })
       .then(response => response.json())
-      .then(data => {
-        console.log(data);
+      .then(() => {
         message.success("You have been successfully subscribed, stay tuned!");
         this.setState({ isPopoverLoading: false });
       })
@@ -98,11 +93,10 @@ class AudioTour extends Component {
       return <Redirect push to="/home" />
     }
     let player = <Alert className="audio-tour-warning" type="warning" message="No audio tours available for this campus."/>;
-    const { rating, school, title, link, markings } = this.props.location.state;
+    const { rating, school, title, link } = this.props.location.state;
     if (link && link.length != 0) {
       player = <Player link={link[this.state.currentIndex]} />
     }
-    console.log(this.props.location.state.link)
 
     return (
       <div className="audio-tour-container">

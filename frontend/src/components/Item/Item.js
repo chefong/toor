@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Rate } from 'antd';
 import './Item.css';
 
-
-
 class Item extends Component {
   render() {
     return (

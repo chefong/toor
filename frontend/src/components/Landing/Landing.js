@@ -1,98 +1,29 @@
 import React, { Component } from 'react';
-import { Icon, Button, Switch} from 'antd';
+import { Button } from 'antd';
 import { NavLink, Redirect } from 'react-router-dom';
 import './Landing.css';
 import Particles from 'react-particles-js';
 import Typing from 'react-typing-animation';
+import { particlesOptions } from '../../constants';
 
 const globe = require('../../assets/imgs/circleMap.svg');
 const phone = require('../../assets/imgs/phone.svg');
 const lightBulb = require('../../assets/imgs/lightbulb.svg');
 const checked = require('../../assets/imgs/checked.svg');
-const marker = require('../../assets/imgs/Marker.png')
-
-const particlesOptions = {
-  particles: {
-      shape: {
-        type: 'images',
-        images: [
-          {src: marker, height: 20, width: 20},
-        ]
-      },
-      number: {
-        value: 100,
-        density: {
-          enable: true,
-          value_area: 800
-        }
-      },
-      size: {
-          value: 6,
-          random: true,
-          anim: {
-              speed: 5.5,
-              size_min: 3
-          }
-      },
-      line_linked: {
-	            enable: false
-      },
-      move: {
-	            random: true,
-	            speed: 1,
-	            direction: "bottom",
-	            out_mode: "out"
-      },
-      color:  {
-        value: "#33BEFF"
-      }
-    },
-      interactivity: {
-	        events: {
-	            onclick: {
-	                enable: true,
-	                mode: "remove"
-	            }
-	        },
-	        modes: {
-	            remove: {
-	                particles_nb: 11
-	            }
-	        }
-	    }
-}
 
 class Landing extends Component {
-  constructor(props){
-  super(props)
-    this.state = {
-      Email: '',
-      Password: '',
-      Redirect: false,
-      bgColor: '',
-      colorChange: false
-    }
+  state = {
+    Email: '',
+    Password: '',
+    Redirect: false,
+    bgColor: '',
+    colorChange: false
   }
 
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
-  }
-
-  darkMode = () => {
-    if (this.state.colorChange === false){
-      this.setState({
-        bgColor: '#696969',
-        colorChange: true
-      })
-    }
-    else {
-      this.setState({
-        bgColor: 'white',
-        colorChange: false
-      })
-    }
   }
 
   render(){
@@ -157,35 +88,7 @@ class Landing extends Component {
           <div className="Innerfooter">Made with ♥ in Philadelphia, PA</div>
           <div className="Innerfooter">© 2019 KirbyDownB</div>
         </div>
-
       </div>
-        // <div className="background">
-        //   <div className="section1" style={{ backgroundImage : `url(${shapes})` }}>
-        //     <div className="circle">
-        //       <img className="pinpoint" src={pinpoint}></img>
-        //     </div>
-        //     <div className="titleBox">
-        //     <h1 className="landing__title">Toor</h1>
-        //     </div>
-        //   </div>
-        //   <div className="section2">
-        //     <Particles className="particles" params={particlesOptions} />
-        //       <div className="section2inner">
-        //         <div className="section2Padding">
-        //           <div className="bodyText">
-        //             <h2 className="section2Header">Sign In</h2>
-        //             <p className="text">Log into your account to access the features of this app</p>
-        //           </div>
-        //           <form onSubmit={this.handleSubmit}>
-        //             <input className="input" type="text" name="Email" placeholder="Email" value={this.state.Email} onChange={this.handleChange}/>
-        //             <input className="input second" type="password" name="Password" placeholder="Password" value={this.state.Password} onChange={this.handleChange}/>
-        //             <button className="Login"> LOGIN </button>
-        //           </form>
-        //           <div className="forgotPwd">Forgot your password?</div>
-        //         </div>
-        //       </div>
-        //     </div>
-        // </div>
     )
   }
 }

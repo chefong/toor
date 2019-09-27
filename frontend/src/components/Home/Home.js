@@ -7,11 +7,11 @@ import MapContainer from '../MapContainer';
 import Item from '../Item/Item';
 import Geocode from "react-geocode";
 import GeoSuggest from '../GeoSuggest';
+import { BASE_URL } from '../../constants';
 
 Geocode.setApiKey(process.env.REACT_APP_GOOGLE);
 Geocode.enableDebug();
 
-const BASE_URL = "https://716222bc.ngrok.io";
 const spinner = require('../../assets/imgs/spinner.svg');
 
 class Home extends Component {
@@ -35,11 +35,9 @@ class Home extends Component {
     this.setState({ isFetching: true });
 
     if (this.state.recentlySearchedLocation) {
-      console.log('using previous location to search', this.state.recentlySearchedLocation)
       fetch(`${BASE_URL}/getByLocation/${this.state.recentlySearchedLocation}`)
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         const searchResults = data.map(({ id, rating, school, title , link, markers }) => ({ id, rating, school, title, link, markers }));
         this.setState({ searchResults, isFetching: false });
       })
@@ -51,7 +49,6 @@ class Home extends Component {
       fetch(`${BASE_URL}/selectN/4`)
         .then(response => response.json())
         .then(data => {
-          console.log(data)
           const searchResults = data.map(({ id, rating, school, title , link, markers }) => ({ id, rating, school, title, link, markers }));
           this.setState({ searchResults, isFetching: false });
         })
@@ -172,9 +169,7 @@ class Home extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         const searchResults = data.map(({ id, link, rating, school, title, markers }) => ({ id, link, rating, school, title, markers }));
-        console.log('searchResults', searchResults);
         this.setState({ searchResults, isFetching: false });
       })
       .catch(error => {
@@ -192,15 +187,6 @@ class Home extends Component {
             <h1 className="title">To͝or</h1>
           </Link>
           <div className="row justify-content-center">
-            {/* <AutoComplete
-              className="home__autocomplete"
-              id="first"
-              dataSource={this.state.dataSource}
-              style={{ width: '304px' }}
-              onSearch={this.onSearch}
-              onSelect={this.onSearchSelect}
-              placeholder="Search for a university..."
-            /> */}
             <div className="col-11">
               <GeoSuggest invokeModalSearch={false} onSearchSelect={this.onSearchSelect} />
             </div>
@@ -213,7 +199,6 @@ class Home extends Component {
               </div>
             : <Fragment>
               {this.state.searchResults && this.state.searchResults.map(result => {
-                console.log("resultttt ", result)
                 return (
                   <Link to={{ pathname: `/home/audio-tour/${result.id}`, state: {...result} }}>
                     <Item {...result} />

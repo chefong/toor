@@ -1,9 +1,9 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import GoogleMapLoader from "react-google-maps-loader";
 import GooglePlacesSuggest from "react-google-places-suggest";
 import { Input } from 'antd';
  
-export default class GoogleSuggest extends React.Component {
+class GeoSuggest extends Component {
   state = {
     search: "",
     value: "",
@@ -28,10 +28,6 @@ export default class GoogleSuggest extends React.Component {
     console.log('No results for ', this.state.search)
   }
 
-  handleStatusUpdate = (status) => {
-    console.log(status)
-  }
-
   render() {
     const {search, value} = this.state
     return (
@@ -50,7 +46,6 @@ export default class GoogleSuggest extends React.Component {
               }}
               onNoResult={this.handleNoResult}
               onSelectSuggest={this.handleSelectSuggest}
-              onStatusUpdate={this.handleStatusUpdate}
             >
               <Input
                 className="geosuggest-input"
@@ -65,3 +60,5 @@ export default class GoogleSuggest extends React.Component {
     )
   }
 }
+
+export default GeoSuggest;

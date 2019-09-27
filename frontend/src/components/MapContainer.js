@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
-import './MapContainer.css'
+import './MapContainer.css';
+import { BASE_URL } from '../constants';
 
 const style = {
   width: '90%',
@@ -40,8 +41,7 @@ class MapContainer extends Component {
    }
 
   handleSubmitButtonClick = () => {
-    console.log("hello")
-    fetch("http://9db5910f.ngrok.io/point", {
+    fetch(`${BASE_URL}/point`, {
       headers: {
         'Content-Type': 'application/json',
       },

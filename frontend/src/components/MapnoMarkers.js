@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
-import './MapContainer.css'
+import './MapContainer.css';
+import { BASE_URL } from '../constants';
 
 const style = {
   width: '90%',
@@ -20,7 +21,7 @@ class MapNoMarkers extends Component {
 
   handleSubmitButtonClick = () => {
     console.log("hello")
-    fetch("https://3bd63842.ngrok.io/point", {
+    fetch(`${BASE_URL}/point`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -41,8 +42,7 @@ class MapNoMarkers extends Component {
       .catch(err => console.log(err))
   }
 
-  componentDidMount (){
-    console.log('hey im inside componentDidMount', this.props.markings)
+  componentDidMount () {
     this.setState({
       userLocation: this.props.markings[0]
     })
@@ -58,8 +58,6 @@ class MapNoMarkers extends Component {
   }
 
   render() {
-    console.log(this.state.userLocation)
-    console.log("got markings from props", this.props.markings)
     return (
       <div className="row justify-content-center">
         {this.state.userLocation && <Map
@@ -79,7 +77,7 @@ class MapNoMarkers extends Component {
           ))}
         </Map>}
       </div>
-    );
+    )
   }
 }
 
