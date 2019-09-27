@@ -9,7 +9,7 @@ Toor
 <h4 align="center">Audio Tours. Anytime. Anywhere. </h4>
 
 ## Demo
-(Coming soon)
+https://my-toor.firebaseapp.com/
 
 ## Inspiration
 What if I want to take an audio tour of a national park or a University campus on my own time? What if I want to take an audio tour of a place that doesn't even offer audio tours?
